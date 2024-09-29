@@ -120,6 +120,7 @@ def col_values(df: pandas.DataFrame, col: str) -> list[str]:
         and "time" not in col
         and "coach" not in col
         and "clock" not in col
+        and "team" not in col
     ):
         values = list(df[col].unique())
         if "nan" in values:
