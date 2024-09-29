@@ -8,7 +8,7 @@ setup(
     author="Adam Lynch",
     author_email="aclynch@umich.edu",
     license="MIT License",
-    packages=["nfldpw"],
+    packages=["nfldpw", "nfldpw.pbp"],
     install_requires=[
         "nfl_data_py>=0.3.3",
     ],
