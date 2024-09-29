@@ -30,6 +30,11 @@ def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
     -------
 
         out : pandas.DataFrame
+
+    Examples
+    --------
+
+        >>> pbp.get([2020, 2021, 2022], "path_to_cache/")
     """
     dfs = []
     if cache_path:
