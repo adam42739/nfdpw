@@ -1,7 +1,7 @@
 import nfl_data_py
 import pandas
 from .. import cache
-from . import sbowls
+from .. import sbowls
 
 
 def _season_complete(df: pandas.DataFrame) -> bool:
