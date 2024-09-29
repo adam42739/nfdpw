@@ -7,6 +7,10 @@ def fname_pbp(season: int) -> str:
     return "pbp-" + str(season)
 
 
+def fname_schedules(season: int) -> str:
+    return "schedules-" + str(season)
+
+
 def load(cache_path: str, fname: str) -> pandas.DataFrame:
     path = cache_path + fname + ".parq"
     return pandas.read_parquet(path)
@@ -17,22 +21,22 @@ def dump(df: pandas.DataFrame, cache_path: str, fname: str):
     df.to_parquet(path)
 
 
-def load_mdata(cache_path: str) -> dict:
+def load_mdata(cache_path: str, mdata_type: str) -> dict:
     mdata = {}
-    path = cache_path + "_mdata.json"
+    path = cache_path + "_mdata-" + mdata_type + ".json"
     if os.path.exists(path):
         with open(path, "r") as file:
             mdata = json.load(file)
     return mdata
 
 
-def dump_mdata(mdata: dict, cache_path: str):
-    with open(cache_path + "_mdata.json", "w") as file:
+def dump_mdata(mdata: dict, cache_path: str, mdata_type: str):
+    with open(cache_path + "_mdata-" + mdata_type + ".json", "w") as file:
         json.dump(mdata, file)
 
 
 def load_pbp_mdata(cache_path: str) -> dict:
-    mdata = load_mdata(cache_path)
+    mdata = load_mdata(cache_path, "pbp")
     new_mdata = {}
     for season in mdata:
         new_mdata[int(season)] = True
@@ -40,4 +44,16 @@ def load_pbp_mdata(cache_path: str) -> dict:
 
 
 def dump_pbp_mdata(mdata: dict, cache_path: str):
-    dump_mdata(mdata, cache_path)
+    dump_mdata(mdata, cache_path, "pbp")
+
+
+def load_schedules_mdata(cache_path: str) -> dict:
+    mdata = load_mdata(cache_path, "schedules")
+    new_mdata = {}
+    for season in mdata:
+        new_mdata[int(season)] = True
+    return new_mdata
+
+
+def dump_schedules_mdata(mdata: dict, cache_path: str):
+    dump_mdata(mdata, cache_path, "schedules")
