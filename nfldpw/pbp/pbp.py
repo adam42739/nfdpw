@@ -12,12 +12,24 @@ def _season_complete(df: pandas.DataFrame) -> bool:
 
 def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
     """
-    ## Args
-
     Get play-by-play data for the list of seasons provided.
     If a cache path is provided, data will be read from the cache
     or stored in the cache if calling for the first time. Otherwise,
     data is loaded from the web source.
+
+    Parameters
+    ----------
+
+    seasons : list[int]
+        Seasons to get play-by-play data for
+
+    cache_path : str = None
+        Path to a directory where cache files will be stored
+
+    Returns
+    -------
+
+        out : pandas.DataFrame
     """
     dfs = []
     if cache_path:
