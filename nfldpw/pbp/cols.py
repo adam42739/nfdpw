@@ -6,11 +6,11 @@ Play-by-play columns
 Header names are accesible as _column_.header.
 
 ```python
->>> cols.PlayID.header
+>>> cols.PlayId.header
 >>> "play_id"
 ```
 
-Some categorical columns provide encoded valuese.
+Some categorical columns provide encoded values.
 
 ```python
 >>> cols.PenaltyType.values.ILLEGAL_BLOCK_ABOVE_THE_WAIST
