@@ -1,3 +1,25 @@
+"""
+====================
+Play-by-play columns
+====================
+
+Header names are accesible as _column_.header.
+
+```python
+>>> cols.PlayID.header
+>>> "play_id"
+```
+
+Some categorical columns provide encoded valuese.
+
+```python
+>>> cols.PenaltyType.values.ILLEGAL_BLOCK_ABOVE_THE_WAIST
+>>> "Illegal Block Above the Waist"
+```
+
+"""
+
+
 class PlayId:
     """
     Numeric play id that when used with game_id and drive provides the unique identifier for a single play.
@@ -29,40 +51,6 @@ class HomeTeam:
 
     header = "home_team"
 
-    class values:
-        WAS = "WAS"
-        NYJ = "NYJ"
-        ATL = "ATL"
-        CLE = "CLE"
-        NYG = "NYG"
-        KC = "KC"
-        CHI = "CHI"
-        BAL = "BAL"
-        IND = "IND"
-        SEA = "SEA"
-        DEN = "DEN"
-        LAC = "LAC"
-        NE = "NE"
-        PIT = "PIT"
-        MIN = "MIN"
-        NO = "NO"
-        CIN = "CIN"
-        TB = "TB"
-        HOU = "HOU"
-        JAX = "JAX"
-        TEN = "TEN"
-        BUF = "BUF"
-        PHI = "PHI"
-        CAR = "CAR"
-        ARI = "ARI"
-        DAL = "DAL"
-        DET = "DET"
-        LA = "LA"
-        MIA = "MIA"
-        GB = "GB"
-        SF = "SF"
-        LV = "LV"
-
 
 class AwayTeam:
     """
@@ -70,40 +58,6 @@ class AwayTeam:
     """
 
     header = "away_team"
-
-    class values:
-        ARI = "ARI"
-        BUF = "BUF"
-        CAR = "CAR"
-        CIN = "CIN"
-        DAL = "DAL"
-        DET = "DET"
-        GB = "GB"
-        HOU = "HOU"
-        JAX = "JAX"
-        LA = "LA"
-        LV = "LV"
-        MIA = "MIA"
-        PHI = "PHI"
-        SF = "SF"
-        TB = "TB"
-        TEN = "TEN"
-        BAL = "BAL"
-        CHI = "CHI"
-        CLE = "CLE"
-        IND = "IND"
-        KC = "KC"
-        LAC = "LAC"
-        MIN = "MIN"
-        NO = "NO"
-        NYG = "NYG"
-        NYJ = "NYJ"
-        SEA = "SEA"
-        WAS = "WAS"
-        ATL = "ATL"
-        DEN = "DEN"
-        NE = "NE"
-        PIT = "PIT"
 
 
 class SeasonType:
@@ -133,40 +87,6 @@ class Posteam:
 
     header = "posteam"
 
-    class values:
-        WAS = "WAS"
-        ARI = "ARI"
-        BUF = "BUF"
-        NYJ = "NYJ"
-        ATL = "ATL"
-        CAR = "CAR"
-        CIN = "CIN"
-        CLE = "CLE"
-        NYG = "NYG"
-        DAL = "DAL"
-        DET = "DET"
-        KC = "KC"
-        CHI = "CHI"
-        GB = "GB"
-        BAL = "BAL"
-        HOU = "HOU"
-        IND = "IND"
-        JAX = "JAX"
-        SEA = "SEA"
-        LA = "LA"
-        LV = "LV"
-        DEN = "DEN"
-        MIA = "MIA"
-        LAC = "LAC"
-        PHI = "PHI"
-        NE = "NE"
-        PIT = "PIT"
-        SF = "SF"
-        MIN = "MIN"
-        TB = "TB"
-        NO = "NO"
-        TEN = "TEN"
-
 
 class PosteamType:
     """
@@ -175,10 +95,6 @@ class PosteamType:
 
     header = "posteam_type"
 
-    class values:
-        HOME = "home"
-        AWAY = "away"
-
 
 class Defteam:
     """
@@ -186,40 +102,6 @@ class Defteam:
     """
 
     header = "defteam"
-
-    class values:
-        ARI = "ARI"
-        WAS = "WAS"
-        NYJ = "NYJ"
-        BUF = "BUF"
-        CAR = "CAR"
-        ATL = "ATL"
-        CLE = "CLE"
-        CIN = "CIN"
-        DAL = "DAL"
-        NYG = "NYG"
-        KC = "KC"
-        DET = "DET"
-        GB = "GB"
-        CHI = "CHI"
-        HOU = "HOU"
-        BAL = "BAL"
-        JAX = "JAX"
-        IND = "IND"
-        LA = "LA"
-        SEA = "SEA"
-        DEN = "DEN"
-        LV = "LV"
-        LAC = "LAC"
-        MIA = "MIA"
-        NE = "NE"
-        PHI = "PHI"
-        SF = "SF"
-        PIT = "PIT"
-        TB = "TB"
-        MIN = "MIN"
-        TEN = "TEN"
-        NO = "NO"
 
 
 class SideOfField:
@@ -633,40 +515,6 @@ class TdTeam:
     """
 
     header = "td_team"
-
-    class values:
-        WAS = "WAS"
-        ARI = "ARI"
-        BUF = "BUF"
-        NYJ = "NYJ"
-        ATL = "ATL"
-        CAR = "CAR"
-        CLE = "CLE"
-        DAL = "DAL"
-        DET = "DET"
-        KC = "KC"
-        GB = "GB"
-        CHI = "CHI"
-        BAL = "BAL"
-        JAX = "JAX"
-        IND = "IND"
-        LA = "LA"
-        SEA = "SEA"
-        LV = "LV"
-        DEN = "DEN"
-        LAC = "LAC"
-        MIA = "MIA"
-        PHI = "PHI"
-        NE = "NE"
-        SF = "SF"
-        PIT = "PIT"
-        MIN = "MIN"
-        TB = "TB"
-        NO = "NO"
-        CIN = "CIN"
-        HOU = "HOU"
-        TEN = "TEN"
-        NYG = "NYG"
 
 
 class TdPlayerName:
@@ -2180,40 +2028,6 @@ class ForcedFumblePlayer1Team:
 
     header = "forced_fumble_player_1_team"
 
-    class values:
-        ARI = "ARI"
-        WAS = "WAS"
-        BUF = "BUF"
-        NYJ = "NYJ"
-        CAR = "CAR"
-        ATL = "ATL"
-        CIN = "CIN"
-        NYG = "NYG"
-        DAL = "DAL"
-        KC = "KC"
-        GB = "GB"
-        HOU = "HOU"
-        BAL = "BAL"
-        IND = "IND"
-        JAX = "JAX"
-        PHI = "PHI"
-        NE = "NE"
-        PIT = "PIT"
-        TB = "TB"
-        TEN = "TEN"
-        CHI = "CHI"
-        CLE = "CLE"
-        MIA = "MIA"
-        MIN = "MIN"
-        NO = "NO"
-        SEA = "SEA"
-        LA = "LA"
-        DEN = "DEN"
-        DET = "DET"
-        LAC = "LAC"
-        SF = "SF"
-        LV = "LV"
-
 
 class ForcedFumblePlayer1PlayerId:
     """
@@ -2237,11 +2051,6 @@ class ForcedFumblePlayer2Team:
     """
 
     header = "forced_fumble_player_2_team"
-
-    class values:
-        IND = "IND"
-        PIT = "PIT"
-        CHI = "CHI"
 
 
 class ForcedFumblePlayer2PlayerId:
@@ -2267,40 +2076,6 @@ class SoloTackle1Team:
 
     header = "solo_tackle_1_team"
 
-    class values:
-        ARI = "ARI"
-        WAS = "WAS"
-        NYJ = "NYJ"
-        BUF = "BUF"
-        CAR = "CAR"
-        ATL = "ATL"
-        CLE = "CLE"
-        CIN = "CIN"
-        DAL = "DAL"
-        NYG = "NYG"
-        DET = "DET"
-        KC = "KC"
-        GB = "GB"
-        CHI = "CHI"
-        HOU = "HOU"
-        BAL = "BAL"
-        JAX = "JAX"
-        IND = "IND"
-        LA = "LA"
-        SEA = "SEA"
-        DEN = "DEN"
-        LV = "LV"
-        LAC = "LAC"
-        MIA = "MIA"
-        NE = "NE"
-        PHI = "PHI"
-        SF = "SF"
-        PIT = "PIT"
-        MIN = "MIN"
-        TB = "TB"
-        TEN = "TEN"
-        NO = "NO"
-
 
 class SoloTackle2Team:
     """
@@ -2308,34 +2083,6 @@ class SoloTackle2Team:
     """
 
     header = "solo_tackle_2_team"
-
-    class values:
-        NYG = "NYG"
-        IND = "IND"
-        PIT = "PIT"
-        LV = "LV"
-        MIN = "MIN"
-        NYJ = "NYJ"
-        DEN = "DEN"
-        TB = "TB"
-        CLE = "CLE"
-        TEN = "TEN"
-        ATL = "ATL"
-        LAC = "LAC"
-        BAL = "BAL"
-        CAR = "CAR"
-        SEA = "SEA"
-        BUF = "BUF"
-        HOU = "HOU"
-        JAX = "JAX"
-        KC = "KC"
-        DET = "DET"
-        ARI = "ARI"
-        CHI = "CHI"
-        LA = "LA"
-        GB = "GB"
-        SF = "SF"
-        NE = "NE"
 
 
 class SoloTackle1PlayerId:
@@ -2393,40 +2140,6 @@ class AssistTackle1Team:
 
     header = "assist_tackle_1_team"
 
-    class values:
-        ARI = "ARI"
-        WAS = "WAS"
-        NYJ = "NYJ"
-        BUF = "BUF"
-        ATL = "ATL"
-        CAR = "CAR"
-        CIN = "CIN"
-        CLE = "CLE"
-        DAL = "DAL"
-        NYG = "NYG"
-        KC = "KC"
-        DET = "DET"
-        GB = "GB"
-        CHI = "CHI"
-        HOU = "HOU"
-        BAL = "BAL"
-        JAX = "JAX"
-        IND = "IND"
-        LA = "LA"
-        SEA = "SEA"
-        DEN = "DEN"
-        LV = "LV"
-        MIA = "MIA"
-        LAC = "LAC"
-        NE = "NE"
-        PHI = "PHI"
-        SF = "SF"
-        PIT = "PIT"
-        TB = "TB"
-        MIN = "MIN"
-        TEN = "TEN"
-        NO = "NO"
-
 
 class AssistTackle2PlayerId:
     """
@@ -2450,40 +2163,6 @@ class AssistTackle2Team:
     """
 
     header = "assist_tackle_2_team"
-
-    class values:
-        ARI = "ARI"
-        WAS = "WAS"
-        NYJ = "NYJ"
-        BUF = "BUF"
-        ATL = "ATL"
-        CAR = "CAR"
-        CIN = "CIN"
-        CLE = "CLE"
-        DAL = "DAL"
-        NYG = "NYG"
-        KC = "KC"
-        DET = "DET"
-        CHI = "CHI"
-        GB = "GB"
-        HOU = "HOU"
-        BAL = "BAL"
-        JAX = "JAX"
-        IND = "IND"
-        LA = "LA"
-        SEA = "SEA"
-        DEN = "DEN"
-        LV = "LV"
-        MIA = "MIA"
-        LAC = "LAC"
-        NE = "NE"
-        PHI = "PHI"
-        PIT = "PIT"
-        SF = "SF"
-        TB = "TB"
-        MIN = "MIN"
-        TEN = "TEN"
-        NO = "NO"
 
 
 class AssistTackle3PlayerId:
@@ -2569,40 +2248,6 @@ class TackleWithAssist1Team:
 
     header = "tackle_with_assist_1_team"
 
-    class values:
-        ARI = "ARI"
-        WAS = "WAS"
-        NYJ = "NYJ"
-        BUF = "BUF"
-        ATL = "ATL"
-        CAR = "CAR"
-        CIN = "CIN"
-        CLE = "CLE"
-        DAL = "DAL"
-        NYG = "NYG"
-        KC = "KC"
-        DET = "DET"
-        GB = "GB"
-        CHI = "CHI"
-        BAL = "BAL"
-        HOU = "HOU"
-        JAX = "JAX"
-        IND = "IND"
-        LA = "LA"
-        SEA = "SEA"
-        DEN = "DEN"
-        LV = "LV"
-        MIA = "MIA"
-        LAC = "LAC"
-        NE = "NE"
-        PHI = "PHI"
-        SF = "SF"
-        PIT = "PIT"
-        TB = "TB"
-        MIN = "MIN"
-        TEN = "TEN"
-        NO = "NO"
-
 
 class TackleWithAssist2PlayerId:
     """
@@ -2667,40 +2312,6 @@ class Fumbled1Team:
 
     header = "fumbled_1_team"
 
-    class values:
-        WAS = "WAS"
-        ARI = "ARI"
-        NYJ = "NYJ"
-        BUF = "BUF"
-        ATL = "ATL"
-        CAR = "CAR"
-        CLE = "CLE"
-        NYG = "NYG"
-        DAL = "DAL"
-        DET = "DET"
-        CHI = "CHI"
-        GB = "GB"
-        BAL = "BAL"
-        HOU = "HOU"
-        JAX = "JAX"
-        IND = "IND"
-        LV = "LV"
-        MIA = "MIA"
-        NE = "NE"
-        PHI = "PHI"
-        SF = "SF"
-        MIN = "MIN"
-        NO = "NO"
-        TB = "TB"
-        PIT = "PIT"
-        KC = "KC"
-        DEN = "DEN"
-        LAC = "LAC"
-        TEN = "TEN"
-        CIN = "CIN"
-        LA = "LA"
-        SEA = "SEA"
-
 
 class Fumbled1PlayerId:
     """
@@ -2741,13 +2352,6 @@ class Fumbled2Team:
 
     header = "fumbled_2_team"
 
-    class values:
-        CLE = "CLE"
-        JAX = "JAX"
-        BAL = "BAL"
-        MIN = "MIN"
-        IND = "IND"
-
 
 class FumbleRecovery1Team:
     """
@@ -2755,40 +2359,6 @@ class FumbleRecovery1Team:
     """
 
     header = "fumble_recovery_1_team"
-
-    class values:
-        ARI = "ARI"
-        WAS = "WAS"
-        BUF = "BUF"
-        ATL = "ATL"
-        CAR = "CAR"
-        CLE = "CLE"
-        NYG = "NYG"
-        DAL = "DAL"
-        DET = "DET"
-        KC = "KC"
-        GB = "GB"
-        BAL = "BAL"
-        HOU = "HOU"
-        JAX = "JAX"
-        LV = "LV"
-        LAC = "LAC"
-        MIA = "MIA"
-        PHI = "PHI"
-        NE = "NE"
-        SF = "SF"
-        PIT = "PIT"
-        TB = "TB"
-        TEN = "TEN"
-        NO = "NO"
-        CHI = "CHI"
-        IND = "IND"
-        SEA = "SEA"
-        MIN = "MIN"
-        NYJ = "NYJ"
-        CIN = "CIN"
-        DEN = "DEN"
-        LA = "LA"
 
 
 class FumbleRecovery1Yards:
@@ -2821,16 +2391,6 @@ class FumbleRecovery2Team:
     """
 
     header = "fumble_recovery_2_team"
-
-    class values:
-        WAS = "WAS"
-        NYJ = "NYJ"
-        CIN = "CIN"
-        IND = "IND"
-        GB = "GB"
-        MIN = "MIN"
-        TEN = "TEN"
-        NYG = "NYG"
 
 
 class FumbleRecovery2Yards:
@@ -2912,40 +2472,6 @@ class ReturnTeam:
 
     header = "return_team"
 
-    class values:
-        WAS = "WAS"
-        ARI = "ARI"
-        BUF = "BUF"
-        NYJ = "NYJ"
-        ATL = "ATL"
-        CAR = "CAR"
-        CIN = "CIN"
-        CLE = "CLE"
-        NYG = "NYG"
-        DAL = "DAL"
-        DET = "DET"
-        KC = "KC"
-        CHI = "CHI"
-        GB = "GB"
-        BAL = "BAL"
-        HOU = "HOU"
-        IND = "IND"
-        JAX = "JAX"
-        SEA = "SEA"
-        LA = "LA"
-        DEN = "DEN"
-        LV = "LV"
-        MIA = "MIA"
-        LAC = "LAC"
-        PHI = "PHI"
-        NE = "NE"
-        PIT = "PIT"
-        SF = "SF"
-        MIN = "MIN"
-        TB = "TB"
-        NO = "NO"
-        TEN = "TEN"
-
 
 class ReturnYards:
     """
@@ -2961,40 +2487,6 @@ class PenaltyTeam:
     """
 
     header = "penalty_team"
-
-    class values:
-        WAS = "WAS"
-        ARI = "ARI"
-        BUF = "BUF"
-        NYJ = "NYJ"
-        CAR = "CAR"
-        ATL = "ATL"
-        CIN = "CIN"
-        CLE = "CLE"
-        DAL = "DAL"
-        NYG = "NYG"
-        KC = "KC"
-        DET = "DET"
-        CHI = "CHI"
-        GB = "GB"
-        BAL = "BAL"
-        HOU = "HOU"
-        IND = "IND"
-        JAX = "JAX"
-        LA = "LA"
-        SEA = "SEA"
-        DEN = "DEN"
-        LV = "LV"
-        LAC = "LAC"
-        MIA = "MIA"
-        NE = "NE"
-        PHI = "PHI"
-        SF = "SF"
-        PIT = "PIT"
-        MIN = "MIN"
-        TB = "TB"
-        TEN = "TEN"
-        NO = "NO"
 
 
 class PenaltyPlayerId:
@@ -3362,10 +2854,6 @@ class SpecialTeamsPlay:
     """
 
     header = "special_teams_play"
-
-    class values:
-        TRUE = 1
-        FALSE = 0
 
 
 class StPlayType:
@@ -4094,40 +3582,6 @@ class PossessionTeam:
     """
 
     header = "possession_team"
-
-    class values:
-        ARI = "ARI"
-        WAS = "WAS"
-        NYJ = "NYJ"
-        BUF = "BUF"
-        CAR = "CAR"
-        ATL = "ATL"
-        CLE = "CLE"
-        CIN = "CIN"
-        DAL = "DAL"
-        NYG = "NYG"
-        KC = "KC"
-        DET = "DET"
-        GB = "GB"
-        CHI = "CHI"
-        HOU = "HOU"
-        BAL = "BAL"
-        JAX = "JAX"
-        IND = "IND"
-        LA = "LA"
-        SEA = "SEA"
-        DEN = "DEN"
-        LV = "LV"
-        LAC = "LAC"
-        MIA = "MIA"
-        NE = "NE"
-        PHI = "PHI"
-        SF = "SF"
-        PIT = "PIT"
-        TB = "TB"
-        MIN = "MIN"
-        TEN = "TEN"
-        NO = "NO"
 
 
 class OffenseFormation:
