@@ -1,1 +1,6 @@
 /env
+/test.py
+/cache
+/nfldpw/cache/__pycache__
+/nfldpw/pbp/__pycache__
+/nfldpw/__pycache__
