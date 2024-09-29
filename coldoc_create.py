@@ -2,6 +2,7 @@ import nfldpw
 import requests
 import pandas
 import nfldpw.pbp
+import nfldpw.schedules
 import io
 import numpy
 
@@ -14,8 +15,10 @@ NGS_DICT = "https://nflreadr.nflverse.com/articles/dictionary_nextgen_stats.html
 PARTICIPATION_DICT = (
     "https://nflreadr.nflverse.com/articles/dictionary_participation.html"
 )
+SCHEDULES_DICT = "https://nflreadr.nflverse.com/articles/dictionary_schedules.html"
 
 PBP_URLS = [PBP_DICT, NGS_DICT, PARTICIPATION_DICT]
+SCHEDULES_URLS = [SCHEDULES_DICT]
 
 
 def get_nflverse_dict(url: str) -> list[list[str]]:
@@ -26,11 +29,12 @@ def get_nflverse_dict(url: str) -> list[list[str]]:
     if ind1 == -1 or ind2 == -1:
         df = pandas.read_html(io.StringIO(text))[0]
         table = df.T.values.tolist()
+    else:
+        table = eval(text[ind1 : ind2 + 2])
+    if table[1][0] == "character" or table[1][0] == "numeric":
         t1 = table[1]
         table[1] = table[2]
         table[2] = t1
-    else:
-        table = eval(text[ind1 : ind2 + 2])
     return table
 
 
@@ -93,6 +97,8 @@ PBP_NOT_KEEP = [
     "yrdln",
     "drive_end_yard_line",
     "fantasy",
+    "gameday",
+    "pfr",
 ]
 
 
@@ -188,4 +194,31 @@ def pbp():
     lines_write(lines, file_path)
 
 
-pbp()
+def schedules_col(
+    df: pandas.DataFrame, col: str, tables: list[list[list[str]]]
+) -> list[str]:
+    lines = []
+    lines.append("class " + format_col(col) + ":")
+    lines.append('\t"""')
+    lines.append("\t" + tables_find(tables, col))
+    lines.append('\t"""')
+    lines.append("")
+    lines.append('\theader = "' + col + '"')
+    lines += col_values(df, col)
+    return lines
+
+
+def schedules():
+    tables = []
+    for url in SCHEDULES_URLS:
+        tables.append(get_nflverse_dict(url))
+    df = nfldpw.schedules.get([2023], CACHE)
+    lines = []
+    for col in df.columns:
+        lines += schedules_col(df, col, tables)
+        lines.append("")
+    file_path = "nfldpw/schedules/cols.py"
+    lines_write(lines, file_path)
+
+
+schedules()
