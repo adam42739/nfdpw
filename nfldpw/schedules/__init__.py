@@ -17,3 +17,4 @@ cols:
 """
 
 from .schedules import get
+from . import cols
