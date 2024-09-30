@@ -13,7 +13,7 @@ Header names are accesible as _column_.header.
 Some categorical columns provide encoded values.
 
 ```python
->>> cols.PenaltyType.values.ILLEGAL_BLOCK_ABOVE_THE_WAIST
+>>> cols.PenaltyType.ILLEGAL_BLOCK_ABOVE_THE_WAIST
 >>> "Illegal Block Above the Waist"
 ```
 
@@ -67,9 +67,8 @@ class SeasonType:
 
     header = "season_type"
 
-    class values:
-        REG = "REG"
-        POST = "POST"
+    REG = "REG"
+    POST = "POST"
 
 
 class Week:
@@ -159,10 +158,9 @@ class GameHalf:
 
     header = "game_half"
 
-    class values:
-        HALF1 = "Half1"
-        HALF2 = "Half2"
-        OVERTIME = "Overtime"
+    HALF1 = "Half1"
+    HALF2 = "Half2"
+    OVERTIME = "Overtime"
 
 
 class QuarterEnd:
@@ -172,9 +170,8 @@ class QuarterEnd:
 
     header = "quarter_end"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Drive:
@@ -192,9 +189,8 @@ class Sp:
 
     header = "sp"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Qtr:
@@ -220,9 +216,8 @@ class GoalToGo:
 
     header = "goal_to_go"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Time:
@@ -272,16 +267,15 @@ class PlayType:
 
     header = "play_type"
 
-    class values:
-        KICKOFF = "kickoff"
-        RUN = "run"
-        PASS = "pass"
-        PUNT = "punt"
-        NO_PLAY = "no_play"
-        EXTRA_POINT = "extra_point"
-        FIELD_GOAL = "field_goal"
-        QB_KNEEL = "qb_kneel"
-        QB_SPIKE = "qb_spike"
+    KICKOFF = "kickoff"
+    RUN = "run"
+    PASS = "pass"
+    PUNT = "punt"
+    NO_PLAY = "no_play"
+    EXTRA_POINT = "extra_point"
+    FIELD_GOAL = "field_goal"
+    QB_KNEEL = "qb_kneel"
+    QB_SPIKE = "qb_spike"
 
 
 class YardsGained:
@@ -299,9 +293,8 @@ class Shotgun:
 
     header = "shotgun"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class NoHuddle:
@@ -311,9 +304,8 @@ class NoHuddle:
 
     header = "no_huddle"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class QbDropback:
@@ -323,9 +315,8 @@ class QbDropback:
 
     header = "qb_dropback"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class QbKneel:
@@ -335,9 +326,8 @@ class QbKneel:
 
     header = "qb_kneel"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class QbSpike:
@@ -347,9 +337,8 @@ class QbSpike:
 
     header = "qb_spike"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class QbScramble:
@@ -359,9 +348,8 @@ class QbScramble:
 
     header = "qb_scramble"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PassLength:
@@ -371,9 +359,8 @@ class PassLength:
 
     header = "pass_length"
 
-    class values:
-        SHORT = "short"
-        DEEP = "deep"
+    SHORT = "short"
+    DEEP = "deep"
 
 
 class PassLocation:
@@ -383,10 +370,9 @@ class PassLocation:
 
     header = "pass_location"
 
-    class values:
-        RIGHT = "right"
-        MIDDLE = "middle"
-        LEFT = "left"
+    RIGHT = "right"
+    MIDDLE = "middle"
+    LEFT = "left"
 
 
 class AirYards:
@@ -412,10 +398,9 @@ class RunLocation:
 
     header = "run_location"
 
-    class values:
-        RIGHT = "right"
-        LEFT = "left"
-        MIDDLE = "middle"
+    RIGHT = "right"
+    LEFT = "left"
+    MIDDLE = "middle"
 
 
 class RunGap:
@@ -425,10 +410,9 @@ class RunGap:
 
     header = "run_gap"
 
-    class values:
-        TACKLE = "tackle"
-        GUARD = "guard"
-        END = "end"
+    TACKLE = "tackle"
+    GUARD = "guard"
+    END = "end"
 
 
 class FieldGoalResult:
@@ -438,10 +422,9 @@ class FieldGoalResult:
 
     header = "field_goal_result"
 
-    class values:
-        MADE = "made"
-        MISSED = "missed"
-        BLOCKED = "blocked"
+    MADE = "made"
+    MISSED = "missed"
+    BLOCKED = "blocked"
 
 
 class KickDistance:
@@ -459,10 +442,9 @@ class ExtraPointResult:
 
     header = "extra_point_result"
 
-    class values:
-        GOOD = "good"
-        FAILED = "failed"
-        BLOCKED = "blocked"
+    GOOD = "good"
+    FAILED = "failed"
+    BLOCKED = "blocked"
 
 
 class TwoPointConvResult:
@@ -472,9 +454,8 @@ class TwoPointConvResult:
 
     header = "two_point_conv_result"
 
-    class values:
-        SUCCESS = "success"
-        FAILURE = "failure"
+    SUCCESS = "success"
+    FAILURE = "failure"
 
 
 class HomeTimeoutsRemaining:
@@ -1068,9 +1049,8 @@ class PuntBlocked:
 
     header = "punt_blocked"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FirstDownRush:
@@ -1080,9 +1060,8 @@ class FirstDownRush:
 
     header = "first_down_rush"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FirstDownPass:
@@ -1092,9 +1071,8 @@ class FirstDownPass:
 
     header = "first_down_pass"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FirstDownPenalty:
@@ -1104,9 +1082,8 @@ class FirstDownPenalty:
 
     header = "first_down_penalty"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class ThirdDownConverted:
@@ -1116,9 +1093,8 @@ class ThirdDownConverted:
 
     header = "third_down_converted"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class ThirdDownFailed:
@@ -1128,9 +1104,8 @@ class ThirdDownFailed:
 
     header = "third_down_failed"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FourthDownConverted:
@@ -1140,9 +1115,8 @@ class FourthDownConverted:
 
     header = "fourth_down_converted"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FourthDownFailed:
@@ -1152,9 +1126,8 @@ class FourthDownFailed:
 
     header = "fourth_down_failed"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class IncompletePass:
@@ -1164,9 +1137,8 @@ class IncompletePass:
 
     header = "incomplete_pass"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Touchback:
@@ -1176,9 +1148,8 @@ class Touchback:
 
     header = "touchback"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Interception:
@@ -1188,9 +1159,8 @@ class Interception:
 
     header = "interception"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PuntInsideTwenty:
@@ -1208,9 +1178,8 @@ class PuntInEndzone:
 
     header = "punt_in_endzone"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PuntOutOfBounds:
@@ -1220,9 +1189,8 @@ class PuntOutOfBounds:
 
     header = "punt_out_of_bounds"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PuntDowned:
@@ -1232,9 +1200,8 @@ class PuntDowned:
 
     header = "punt_downed"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PuntFairCatch:
@@ -1244,9 +1211,8 @@ class PuntFairCatch:
 
     header = "punt_fair_catch"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class KickoffInsideTwenty:
@@ -1264,9 +1230,8 @@ class KickoffInEndzone:
 
     header = "kickoff_in_endzone"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class KickoffOutOfBounds:
@@ -1276,9 +1241,8 @@ class KickoffOutOfBounds:
 
     header = "kickoff_out_of_bounds"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class KickoffDowned:
@@ -1288,9 +1252,8 @@ class KickoffDowned:
 
     header = "kickoff_downed"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class KickoffFairCatch:
@@ -1300,9 +1263,8 @@ class KickoffFairCatch:
 
     header = "kickoff_fair_catch"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FumbleForced:
@@ -1312,9 +1274,8 @@ class FumbleForced:
 
     header = "fumble_forced"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FumbleNotForced:
@@ -1324,9 +1285,8 @@ class FumbleNotForced:
 
     header = "fumble_not_forced"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FumbleOutOfBounds:
@@ -1336,9 +1296,8 @@ class FumbleOutOfBounds:
 
     header = "fumble_out_of_bounds"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class SoloTackle:
@@ -1348,9 +1307,8 @@ class SoloTackle:
 
     header = "solo_tackle"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Safety:
@@ -1360,9 +1318,8 @@ class Safety:
 
     header = "safety"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Penalty:
@@ -1372,9 +1329,8 @@ class Penalty:
 
     header = "penalty"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class TackledForLoss:
@@ -1384,9 +1340,8 @@ class TackledForLoss:
 
     header = "tackled_for_loss"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FumbleLost:
@@ -1396,9 +1351,8 @@ class FumbleLost:
 
     header = "fumble_lost"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class OwnKickoffRecovery:
@@ -1408,9 +1362,8 @@ class OwnKickoffRecovery:
 
     header = "own_kickoff_recovery"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class OwnKickoffRecoveryTd:
@@ -1428,9 +1381,8 @@ class QbHit:
 
     header = "qb_hit"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class RushAttempt:
@@ -1440,9 +1392,8 @@ class RushAttempt:
 
     header = "rush_attempt"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PassAttempt:
@@ -1452,9 +1403,8 @@ class PassAttempt:
 
     header = "pass_attempt"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Sack:
@@ -1464,9 +1414,8 @@ class Sack:
 
     header = "sack"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Touchdown:
@@ -1476,9 +1425,8 @@ class Touchdown:
 
     header = "touchdown"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PassTouchdown:
@@ -1488,9 +1436,8 @@ class PassTouchdown:
 
     header = "pass_touchdown"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class RushTouchdown:
@@ -1500,9 +1447,8 @@ class RushTouchdown:
 
     header = "rush_touchdown"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class ReturnTouchdown:
@@ -1512,9 +1458,8 @@ class ReturnTouchdown:
 
     header = "return_touchdown"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class ExtraPointAttempt:
@@ -1524,9 +1469,8 @@ class ExtraPointAttempt:
 
     header = "extra_point_attempt"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class TwoPointAttempt:
@@ -1536,9 +1480,8 @@ class TwoPointAttempt:
 
     header = "two_point_attempt"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FieldGoalAttempt:
@@ -1548,9 +1491,8 @@ class FieldGoalAttempt:
 
     header = "field_goal_attempt"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class KickoffAttempt:
@@ -1560,9 +1502,8 @@ class KickoffAttempt:
 
     header = "kickoff_attempt"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PuntAttempt:
@@ -1572,9 +1513,8 @@ class PuntAttempt:
 
     header = "punt_attempt"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Fumble:
@@ -1584,9 +1524,8 @@ class Fumble:
 
     header = "fumble"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class CompletePass:
@@ -1596,9 +1535,8 @@ class CompletePass:
 
     header = "complete_pass"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class AssistTackle:
@@ -1608,9 +1546,8 @@ class AssistTackle:
 
     header = "assist_tackle"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class LateralReception:
@@ -1620,9 +1557,8 @@ class LateralReception:
 
     header = "lateral_reception"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class LateralRush:
@@ -1632,9 +1568,8 @@ class LateralRush:
 
     header = "lateral_rush"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class LateralReturn:
@@ -1644,9 +1579,8 @@ class LateralReturn:
 
     header = "lateral_return"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class LateralRecovery:
@@ -1656,9 +1590,8 @@ class LateralRecovery:
 
     header = "lateral_recovery"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PasserPlayerId:
@@ -2220,9 +2153,8 @@ class TackleWithAssist:
 
     header = "tackle_with_assist"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class TackleWithAssist1PlayerId:
@@ -2520,9 +2452,8 @@ class ReplayOrChallenge:
 
     header = "replay_or_challenge"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class ReplayOrChallengeResult:
@@ -2532,9 +2463,8 @@ class ReplayOrChallengeResult:
 
     header = "replay_or_challenge_result"
 
-    class values:
-        UPHELD = "upheld"
-        REVERSED = "reversed"
+    UPHELD = "upheld"
+    REVERSED = "reversed"
 
 
 class PenaltyType:
@@ -2544,61 +2474,60 @@ class PenaltyType:
 
     header = "penalty_type"
 
-    class values:
-        ILLEGAL_BLOCK_ABOVE_THE_WAIST = "Illegal Block Above the Waist"
-        LOWERING_THE_HEAD_TO_MAKE_FORCIBLE_CONTACT = (
-            "Lowering the Head to Make Forcible Contact"
-        )
-        DEFENSIVE_PASS_INTERFERENCE = "Defensive Pass Interference"
-        OFFENSIVE_PASS_INTERFERENCE = "Offensive Pass Interference"
-        ROUGHING_THE_PASSER = "Roughing the Passer"
-        INELIGIBLE_DOWNFIELD_PASS = "Ineligible Downfield Pass"
-        OFFENSIVE_HOLDING = "Offensive Holding"
-        FALSE_START = "False Start"
-        UNSPORTSMANLIKE_CONDUCT = "Unsportsmanlike Conduct"
-        DEFENSIVE_TOO_MANY_MEN_ON_FIELD = "Defensive Too Many Men on Field"
-        DELAY_OF_GAME = "Delay of Game"
-        DEFENSIVE_HOLDING = "Defensive Holding"
-        TAUNTING = "Taunting"
-        ILLEGAL_SHIFT = "Illegal Shift"
-        UNNECESSARY_ROUGHNESS = "Unnecessary Roughness"
-        ILLEGAL_FORMATION = "Illegal Formation"
-        PLAYER_OUT_OF_BOUNDS_ON_KICK = "Player Out of Bounds on Kick"
-        ILLEGAL_CONTACT = "Illegal Contact"
-        DEFENSIVE_OFFSIDE = "Defensive Offside"
-        TRIPPING = "Tripping"
-        FACE_MASK = "Face Mask"
-        RUNNING_INTO_THE_KICKER = "Running Into the Kicker"
-        ILLEGAL_MOTION = "Illegal Motion"
-        LOW_BLOCK = "Low Block"
-        ILLEGAL_USE_OF_HANDS = "Illegal Use of Hands"
-        INTENTIONAL_GROUNDING = "Intentional Grounding"
-        ILLEGAL_BLINDSIDE_BLOCK = "Illegal Blindside Block"
-        OFFSIDE_ON_FREE_KICK = "Offside on Free Kick"
-        ENCROACHMENT = "Encroachment"
-        ILLEGAL_TOUCH_KICK = "Illegal Touch Kick"
-        NEUTRAL_ZONE_INFRACTION = "Neutral Zone Infraction"
-        ROUGHING_THE_KICKER = "Roughing the Kicker"
-        CHOP_BLOCK = "Chop Block"
-        INELIGIBLE_DOWNFIELD_KICK = "Ineligible Downfield Kick"
-        ILLEGAL_FORWARD_PASS = "Illegal Forward Pass"
-        HORSE_COLLAR_TACKLE = "Horse Collar Tackle"
-        DEFENSIVE_DELAY_OF_GAME = "Defensive Delay of Game"
-        FAIR_CATCH_INTERFERENCE = "Fair Catch Interference"
-        DISQUALIFICATION = "Disqualification"
-        ILLEGAL_PEELBACK = "Illegal Peelback"
-        ILLEGAL_TOUCH_PASS = "Illegal Touch Pass"
-        OFFENSIVE_TOO_MANY_MEN_ON_FIELD = "Offensive Too Many Men on Field"
-        LEVERAGE = "Leverage"
-        LEAPING = "Leaping"
-        ILLEGAL_CRACKBACK = "Illegal Crackback"
-        OFFENSIVE_OFFSIDE = "Offensive Offside"
-        ILLEGAL_SUBSTITUTION = "Illegal Substitution"
-        KICK_CATCH_INTERFERENCE = "Kick Catch Interference"
-        ILLEGAL_DOUBLETEAM_BLOCK = "Illegal Double-Team Block"
-        ILLEGAL_KICKKICKING_LOOSE_BALL = "Illegal Kick/Kicking Loose Ball"
-        CLIPPING = "Clipping"
-        ILLEGAL_BAT = "Illegal Bat"
+    ILLEGAL_BLOCK_ABOVE_THE_WAIST = "Illegal Block Above the Waist"
+    LOWERING_THE_HEAD_TO_MAKE_FORCIBLE_CONTACT = (
+        "Lowering the Head to Make Forcible Contact"
+    )
+    DEFENSIVE_PASS_INTERFERENCE = "Defensive Pass Interference"
+    OFFENSIVE_PASS_INTERFERENCE = "Offensive Pass Interference"
+    ROUGHING_THE_PASSER = "Roughing the Passer"
+    INELIGIBLE_DOWNFIELD_PASS = "Ineligible Downfield Pass"
+    OFFENSIVE_HOLDING = "Offensive Holding"
+    FALSE_START = "False Start"
+    UNSPORTSMANLIKE_CONDUCT = "Unsportsmanlike Conduct"
+    DEFENSIVE_TOO_MANY_MEN_ON_FIELD = "Defensive Too Many Men on Field"
+    DELAY_OF_GAME = "Delay of Game"
+    DEFENSIVE_HOLDING = "Defensive Holding"
+    TAUNTING = "Taunting"
+    ILLEGAL_SHIFT = "Illegal Shift"
+    UNNECESSARY_ROUGHNESS = "Unnecessary Roughness"
+    ILLEGAL_FORMATION = "Illegal Formation"
+    PLAYER_OUT_OF_BOUNDS_ON_KICK = "Player Out of Bounds on Kick"
+    ILLEGAL_CONTACT = "Illegal Contact"
+    DEFENSIVE_OFFSIDE = "Defensive Offside"
+    TRIPPING = "Tripping"
+    FACE_MASK = "Face Mask"
+    RUNNING_INTO_THE_KICKER = "Running Into the Kicker"
+    ILLEGAL_MOTION = "Illegal Motion"
+    LOW_BLOCK = "Low Block"
+    ILLEGAL_USE_OF_HANDS = "Illegal Use of Hands"
+    INTENTIONAL_GROUNDING = "Intentional Grounding"
+    ILLEGAL_BLINDSIDE_BLOCK = "Illegal Blindside Block"
+    OFFSIDE_ON_FREE_KICK = "Offside on Free Kick"
+    ENCROACHMENT = "Encroachment"
+    ILLEGAL_TOUCH_KICK = "Illegal Touch Kick"
+    NEUTRAL_ZONE_INFRACTION = "Neutral Zone Infraction"
+    ROUGHING_THE_KICKER = "Roughing the Kicker"
+    CHOP_BLOCK = "Chop Block"
+    INELIGIBLE_DOWNFIELD_KICK = "Ineligible Downfield Kick"
+    ILLEGAL_FORWARD_PASS = "Illegal Forward Pass"
+    HORSE_COLLAR_TACKLE = "Horse Collar Tackle"
+    DEFENSIVE_DELAY_OF_GAME = "Defensive Delay of Game"
+    FAIR_CATCH_INTERFERENCE = "Fair Catch Interference"
+    DISQUALIFICATION = "Disqualification"
+    ILLEGAL_PEELBACK = "Illegal Peelback"
+    ILLEGAL_TOUCH_PASS = "Illegal Touch Pass"
+    OFFENSIVE_TOO_MANY_MEN_ON_FIELD = "Offensive Too Many Men on Field"
+    LEVERAGE = "Leverage"
+    LEAPING = "Leaping"
+    ILLEGAL_CRACKBACK = "Illegal Crackback"
+    OFFENSIVE_OFFSIDE = "Offensive Offside"
+    ILLEGAL_SUBSTITUTION = "Illegal Substitution"
+    KICK_CATCH_INTERFERENCE = "Kick Catch Interference"
+    ILLEGAL_DOUBLETEAM_BLOCK = "Illegal Double-Team Block"
+    ILLEGAL_KICKKICKING_LOOSE_BALL = "Illegal Kick/Kicking Loose Ball"
+    CLIPPING = "Clipping"
+    ILLEGAL_BAT = "Illegal Bat"
 
 
 class DefensiveTwoPointAttempt:
@@ -2608,9 +2537,8 @@ class DefensiveTwoPointAttempt:
 
     header = "defensive_two_point_attempt"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class DefensiveTwoPointConv:
@@ -2620,9 +2548,8 @@ class DefensiveTwoPointConv:
 
     header = "defensive_two_point_conv"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class DefensiveExtraPointAttempt:
@@ -2696,9 +2623,8 @@ class SeriesSuccess:
 
     header = "series_success"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class SeriesResult:
@@ -2708,18 +2634,17 @@ class SeriesResult:
 
     header = "series_result"
 
-    class values:
-        FIRST_DOWN = "First down"
-        PUNT = "Punt"
-        TOUCHDOWN = "Touchdown"
-        FIELD_GOAL = "Field goal"
-        TURNOVER = "Turnover"
-        OPP_TOUCHDOWN = "Opp touchdown"
-        TURNOVER_ON_DOWNS = "Turnover on downs"
-        QB_KNEEL = "QB kneel"
-        END_OF_HALF = "End of half"
-        MISSED_FIELD_GOAL = "Missed field goal"
-        SAFETY = "Safety"
+    FIRST_DOWN = "First down"
+    PUNT = "Punt"
+    TOUCHDOWN = "Touchdown"
+    FIELD_GOAL = "Field goal"
+    TURNOVER = "Turnover"
+    OPP_TOUCHDOWN = "Opp touchdown"
+    TURNOVER_ON_DOWNS = "Turnover on downs"
+    QB_KNEEL = "QB kneel"
+    END_OF_HALF = "End of half"
+    MISSED_FIELD_GOAL = "Missed field goal"
+    SAFETY = "Safety"
 
 
 class OrderSequence:
@@ -2753,40 +2678,39 @@ class Stadium:
 
     header = "stadium"
 
-    class values:
-        COMMANDERS_FIELD = "Commanders Field"
-        METLIFE_STADIUM = "MetLife Stadium"
-        MERCEDESBENZ_STADIUM = "Mercedes-Benz Stadium"
-        CLEVELAND_BROWNS_STADIUM = "Cleveland Browns Stadium"
-        GEHA_FIELD_AT_ARROWHEAD_STADIUM = "GEHA Field at Arrowhead Stadium"
-        SOLDIER_FIELD = "Soldier Field"
-        MT_BANK_STADIUM = "M&T Bank Stadium"
-        LUCAS_OIL_STADIUM = "Lucas Oil Stadium"
-        LUMEN_FIELD = "Lumen Field"
-        EMPOWER_FIELD_AT_MILE_HIGH = "Empower Field at Mile High"
-        SOFI_STADIUM = "SoFi Stadium"
-        GILLETTE_STADIUM = "Gillette Stadium"
-        ACRISURE_STADIUM = "Acrisure Stadium"
-        US_BANK_STADIUM = "U.S. Bank Stadium"
-        CAESARS_SUPERDOME = "Caesars Superdome"
-        PAYCOR_STADIUM = "Paycor Stadium"
-        RAYMOND_JAMES_STADIUM = "Raymond James Stadium"
-        NRG_STADIUM = "NRG Stadium"
-        EVERBANK_STADIUM = "EverBank Stadium"
-        NISSAN_STADIUM = "Nissan Stadium"
-        HIGHMARK_STADIUM = "Highmark Stadium"
-        LINCOLN_FINANCIAL_FIELD = "Lincoln Financial Field"
-        BANK_OF_AMERICA_STADIUM = "Bank of America Stadium"
-        STATE_FARM_STADIUM = "State Farm Stadium"
-        ATT_STADIUM = "AT&T Stadium"
-        FORD_FIELD = "Ford Field"
-        HARD_ROCK_STADIUM = "Hard Rock Stadium"
-        LAMBEAU_FIELD = "Lambeau Field"
-        LEVIS_STADIUM = "Levi's® Stadium"
-        ALLEGIANT_STADIUM = "Allegiant Stadium"
-        WEMBLEY_STADIUM = "Wembley Stadium"
-        TOTTENHAM_HOTSPUR_STADIUM = "Tottenham Hotspur Stadium"
-        FRANKFURT_STADIUM = "Frankfurt Stadium"
+    COMMANDERS_FIELD = "Commanders Field"
+    METLIFE_STADIUM = "MetLife Stadium"
+    MERCEDESBENZ_STADIUM = "Mercedes-Benz Stadium"
+    CLEVELAND_BROWNS_STADIUM = "Cleveland Browns Stadium"
+    GEHA_FIELD_AT_ARROWHEAD_STADIUM = "GEHA Field at Arrowhead Stadium"
+    SOLDIER_FIELD = "Soldier Field"
+    MT_BANK_STADIUM = "M&T Bank Stadium"
+    LUCAS_OIL_STADIUM = "Lucas Oil Stadium"
+    LUMEN_FIELD = "Lumen Field"
+    EMPOWER_FIELD_AT_MILE_HIGH = "Empower Field at Mile High"
+    SOFI_STADIUM = "SoFi Stadium"
+    GILLETTE_STADIUM = "Gillette Stadium"
+    ACRISURE_STADIUM = "Acrisure Stadium"
+    US_BANK_STADIUM = "U.S. Bank Stadium"
+    CAESARS_SUPERDOME = "Caesars Superdome"
+    PAYCOR_STADIUM = "Paycor Stadium"
+    RAYMOND_JAMES_STADIUM = "Raymond James Stadium"
+    NRG_STADIUM = "NRG Stadium"
+    EVERBANK_STADIUM = "EverBank Stadium"
+    NISSAN_STADIUM = "Nissan Stadium"
+    HIGHMARK_STADIUM = "Highmark Stadium"
+    LINCOLN_FINANCIAL_FIELD = "Lincoln Financial Field"
+    BANK_OF_AMERICA_STADIUM = "Bank of America Stadium"
+    STATE_FARM_STADIUM = "State Farm Stadium"
+    ATT_STADIUM = "AT&T Stadium"
+    FORD_FIELD = "Ford Field"
+    HARD_ROCK_STADIUM = "Hard Rock Stadium"
+    LAMBEAU_FIELD = "Lambeau Field"
+    LEVIS_STADIUM = "Levi's® Stadium"
+    ALLEGIANT_STADIUM = "Allegiant Stadium"
+    WEMBLEY_STADIUM = "Wembley Stadium"
+    TOTTENHAM_HOTSPUR_STADIUM = "Tottenham Hotspur Stadium"
+    FRANKFURT_STADIUM = "Frankfurt Stadium"
 
 
 class Weather:
@@ -2828,24 +2752,23 @@ class PlayTypeNfl:
 
     header = "play_type_nfl"
 
-    class values:
-        GAME_START = "GAME_START"
-        KICK_OFF = "KICK_OFF"
-        RUSH = "RUSH"
-        PASS = "PASS"
-        PUNT = "PUNT"
-        PENALTY = "PENALTY"
-        XP_KICK = "XP_KICK"
-        TIMEOUT = "TIMEOUT"
-        FIELD_GOAL = "FIELD_GOAL"
-        SACK = "SACK"
-        END_QUARTER = "END_QUARTER"
-        INTERCEPTION = "INTERCEPTION"
-        UNSPECIFIED = "UNSPECIFIED"
-        END_GAME = "END_GAME"
-        FUMBLE_RECOVERED_BY_OPPONENT = "FUMBLE_RECOVERED_BY_OPPONENT"
-        PAT2 = "PAT2"
-        COMMENT = "COMMENT"
+    GAME_START = "GAME_START"
+    KICK_OFF = "KICK_OFF"
+    RUSH = "RUSH"
+    PASS = "PASS"
+    PUNT = "PUNT"
+    PENALTY = "PENALTY"
+    XP_KICK = "XP_KICK"
+    TIMEOUT = "TIMEOUT"
+    FIELD_GOAL = "FIELD_GOAL"
+    SACK = "SACK"
+    END_QUARTER = "END_QUARTER"
+    INTERCEPTION = "INTERCEPTION"
+    UNSPECIFIED = "UNSPECIFIED"
+    END_GAME = "END_GAME"
+    FUMBLE_RECOVERED_BY_OPPONENT = "FUMBLE_RECOVERED_BY_OPPONENT"
+    PAT2 = "PAT2"
+    COMMENT = "COMMENT"
 
 
 class SpecialTeamsPlay:
@@ -2895,16 +2818,15 @@ class FixedDriveResult:
 
     header = "fixed_drive_result"
 
-    class values:
-        PUNT = "Punt"
-        TOUCHDOWN = "Touchdown"
-        FIELD_GOAL = "Field goal"
-        TURNOVER = "Turnover"
-        OPP_TOUCHDOWN = "Opp touchdown"
-        TURNOVER_ON_DOWNS = "Turnover on downs"
-        END_OF_HALF = "End of half"
-        MISSED_FIELD_GOAL = "Missed field goal"
-        SAFETY = "Safety"
+    PUNT = "Punt"
+    TOUCHDOWN = "Touchdown"
+    FIELD_GOAL = "Field goal"
+    TURNOVER = "Turnover"
+    OPP_TOUCHDOWN = "Opp touchdown"
+    TURNOVER_ON_DOWNS = "Turnover on downs"
+    END_OF_HALF = "End of half"
+    MISSED_FIELD_GOAL = "Missed field goal"
+    SAFETY = "Safety"
 
 
 class DriveRealStartTime:
@@ -2954,9 +2876,8 @@ class DriveEndedWithScore:
 
     header = "drive_ended_with_score"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class DriveQuarterStart:
@@ -2990,19 +2911,18 @@ class DriveStartTransition:
 
     header = "drive_start_transition"
 
-    class values:
-        KICKOFF = "KICKOFF"
-        PUNT = "PUNT"
-        INTERCEPTION = "INTERCEPTION"
-        FUMBLE = "FUMBLE"
-        DOWNS = "DOWNS"
-        MISSED_FG = "MISSED_FG"
-        BLOCKED_FG = "BLOCKED_FG"
-        BLOCKED_FG_DOWNS = "BLOCKED_FG,_DOWNS"
-        MUFFED_PUNT = "MUFFED_PUNT"
-        ONSIDE_KICK = "ONSIDE_KICK"
-        BLOCKED_PUNT = "BLOCKED_PUNT"
-        BLOCKED_PUNT_DOWNS = "BLOCKED_PUNT,_DOWNS"
+    KICKOFF = "KICKOFF"
+    PUNT = "PUNT"
+    INTERCEPTION = "INTERCEPTION"
+    FUMBLE = "FUMBLE"
+    DOWNS = "DOWNS"
+    MISSED_FG = "MISSED_FG"
+    BLOCKED_FG = "BLOCKED_FG"
+    BLOCKED_FG_DOWNS = "BLOCKED_FG,_DOWNS"
+    MUFFED_PUNT = "MUFFED_PUNT"
+    ONSIDE_KICK = "ONSIDE_KICK"
+    BLOCKED_PUNT = "BLOCKED_PUNT"
+    BLOCKED_PUNT_DOWNS = "BLOCKED_PUNT,_DOWNS"
 
 
 class DriveEndTransition:
@@ -3012,22 +2932,21 @@ class DriveEndTransition:
 
     header = "drive_end_transition"
 
-    class values:
-        PUNT = "PUNT"
-        TOUCHDOWN = "TOUCHDOWN"
-        FIELD_GOAL = "FIELD_GOAL"
-        INTERCEPTION = "INTERCEPTION"
-        FUMBLE = "FUMBLE"
-        DOWNS = "DOWNS"
-        END_HALF = "END_HALF"
-        END_GAME = "END_GAME"
-        MISSED_FG = "MISSED_FG"
-        BLOCKED_FG = "BLOCKED_FG"
-        BLOCKED_FG_DOWNS = "BLOCKED_FG,_DOWNS"
-        SAFETY = "SAFETY"
-        FUMBLE_SAFETY = "FUMBLE,_SAFETY"
-        BLOCKED_PUNT = "BLOCKED_PUNT"
-        BLOCKED_PUNT_DOWNS = "BLOCKED_PUNT,_DOWNS"
+    PUNT = "PUNT"
+    TOUCHDOWN = "TOUCHDOWN"
+    FIELD_GOAL = "FIELD_GOAL"
+    INTERCEPTION = "INTERCEPTION"
+    FUMBLE = "FUMBLE"
+    DOWNS = "DOWNS"
+    END_HALF = "END_HALF"
+    END_GAME = "END_GAME"
+    MISSED_FG = "MISSED_FG"
+    BLOCKED_FG = "BLOCKED_FG"
+    BLOCKED_FG_DOWNS = "BLOCKED_FG,_DOWNS"
+    SAFETY = "SAFETY"
+    FUMBLE_SAFETY = "FUMBLE,_SAFETY"
+    BLOCKED_PUNT = "BLOCKED_PUNT"
+    BLOCKED_PUNT_DOWNS = "BLOCKED_PUNT,_DOWNS"
 
 
 class DriveGameClockStart:
@@ -3101,9 +3020,8 @@ class Location:
 
     header = "location"
 
-    class values:
-        HOME = "Home"
-        NEUTRAL = "Neutral"
+    HOME = "Home"
+    NEUTRAL = "Neutral"
 
 
 class Result:
@@ -3145,9 +3063,8 @@ class DivGame:
 
     header = "div_game"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Roof:
@@ -3157,11 +3074,10 @@ class Roof:
 
     header = "roof"
 
-    class values:
-        OUTDOORS = "outdoors"
-        CLOSED = "closed"
-        DOME = "dome"
-        OPEN = "open"
+    OUTDOORS = "outdoors"
+    CLOSED = "closed"
+    DOME = "dome"
+    OPEN = "open"
 
 
 class Surface:
@@ -3171,13 +3087,12 @@ class Surface:
 
     header = "surface"
 
-    class values:
-        FIELDTURF = "fieldturf"
-        GRASS = "grass"
-        SPORTTURF = "sportturf"
-        MATRIXTURF = "matrixturf"
-        A_TURF = "a_turf"
-        ASTROTURF = "astroturf"
+    FIELDTURF = "fieldturf"
+    GRASS = "grass"
+    SPORTTURF = "sportturf"
+    MATRIXTURF = "matrixturf"
+    A_TURF = "a_turf"
+    ASTROTURF = "astroturf"
 
 
 class Temp:
@@ -3227,37 +3142,36 @@ class GameStadium:
 
     header = "game_stadium"
 
-    class values:
-        FEDEXFIELD = "FedExField"
-        METLIFE_STADIUM = "MetLife Stadium"
-        MERCEDESBENZ_STADIUM = "Mercedes-Benz Stadium"
-        FIRSTENERGY_STADIUM = "FirstEnergy Stadium"
-        GEHA_FIELD_AT_ARROWHEAD_STADIUM = "GEHA Field at Arrowhead Stadium"
-        SOLDIER_FIELD = "Soldier Field"
-        MT_BANK_STADIUM = "M&T Bank Stadium"
-        LUCAS_OIL_STADIUM = "Lucas Oil Stadium"
-        LUMEN_FIELD = "Lumen Field"
-        EMPOWER_FIELD_AT_MILE_HIGH = "Empower Field at Mile High"
-        SOFI_STADIUM = "SoFi Stadium"
-        GILLETTE_STADIUM = "Gillette Stadium"
-        ACRISURE_STADIUM = "Acrisure Stadium"
-        US_BANK_STADIUM = "U.S. Bank Stadium"
-        MERCEDESBENZ_SUPERDOME = "Mercedes-Benz Superdome"
-        PAYCOR_STADIUM = "Paycor Stadium"
-        RAYMOND_JAMES_STADIUM = "Raymond James Stadium"
-        NRG_STADIUM = "NRG Stadium"
-        TIAA_BANK_STADIUM = "TIAA Bank Stadium"
-        NISSAN_STADIUM = "Nissan Stadium"
-        NEW_ERA_FIELD = "New Era Field"
-        LINCOLN_FINANCIAL_FIELD = "Lincoln Financial Field"
-        BANK_OF_AMERICA_STADIUM = "Bank of America Stadium"
-        STATE_FARM_STADIUM = "State Farm Stadium"
-        ATT_STADIUM = "AT&T Stadium"
-        FORD_FIELD = "Ford Field"
-        HARD_ROCK_STADIUM = "Hard Rock Stadium"
-        LAMBEAU_FIELD = "Lambeau Field"
-        LEVIS_STADIUM = "Levi's Stadium"
-        ALLEGIANT_STADIUM = "Allegiant Stadium"
+    FEDEXFIELD = "FedExField"
+    METLIFE_STADIUM = "MetLife Stadium"
+    MERCEDESBENZ_STADIUM = "Mercedes-Benz Stadium"
+    FIRSTENERGY_STADIUM = "FirstEnergy Stadium"
+    GEHA_FIELD_AT_ARROWHEAD_STADIUM = "GEHA Field at Arrowhead Stadium"
+    SOLDIER_FIELD = "Soldier Field"
+    MT_BANK_STADIUM = "M&T Bank Stadium"
+    LUCAS_OIL_STADIUM = "Lucas Oil Stadium"
+    LUMEN_FIELD = "Lumen Field"
+    EMPOWER_FIELD_AT_MILE_HIGH = "Empower Field at Mile High"
+    SOFI_STADIUM = "SoFi Stadium"
+    GILLETTE_STADIUM = "Gillette Stadium"
+    ACRISURE_STADIUM = "Acrisure Stadium"
+    US_BANK_STADIUM = "U.S. Bank Stadium"
+    MERCEDESBENZ_SUPERDOME = "Mercedes-Benz Superdome"
+    PAYCOR_STADIUM = "Paycor Stadium"
+    RAYMOND_JAMES_STADIUM = "Raymond James Stadium"
+    NRG_STADIUM = "NRG Stadium"
+    TIAA_BANK_STADIUM = "TIAA Bank Stadium"
+    NISSAN_STADIUM = "Nissan Stadium"
+    NEW_ERA_FIELD = "New Era Field"
+    LINCOLN_FINANCIAL_FIELD = "Lincoln Financial Field"
+    BANK_OF_AMERICA_STADIUM = "Bank of America Stadium"
+    STATE_FARM_STADIUM = "State Farm Stadium"
+    ATT_STADIUM = "AT&T Stadium"
+    FORD_FIELD = "Ford Field"
+    HARD_ROCK_STADIUM = "Hard Rock Stadium"
+    LAMBEAU_FIELD = "Lambeau Field"
+    LEVIS_STADIUM = "Levi's Stadium"
+    ALLEGIANT_STADIUM = "Allegiant Stadium"
 
 
 class AbortedPlay:
@@ -3267,9 +3181,8 @@ class AbortedPlay:
 
     header = "aborted_play"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Success:
@@ -3279,9 +3192,8 @@ class Success:
 
     header = "success"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Passer:
@@ -3339,9 +3251,8 @@ class Pass:
 
     header = "pass"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Rush:
@@ -3351,9 +3262,8 @@ class Rush:
 
     header = "rush"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class FirstDown:
@@ -3363,9 +3273,8 @@ class FirstDown:
 
     header = "first_down"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Special:
@@ -3375,9 +3284,8 @@ class Special:
 
     header = "special"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Play:
@@ -3387,9 +3295,8 @@ class Play:
 
     header = "play"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class PasserId:
@@ -3479,9 +3386,8 @@ class OutOfBounds:
 
     header = "out_of_bounds"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class HomeOpeningKickoff:
@@ -3491,9 +3397,8 @@ class HomeOpeningKickoff:
 
     header = "home_opening_kickoff"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class QbEpa:
@@ -3591,14 +3496,13 @@ class OffenseFormation:
 
     header = "offense_formation"
 
-    class values:
-        SHOTGUN = "SHOTGUN"
-        I_FORM = "I_FORM"
-        SINGLEBACK = "SINGLEBACK"
-        EMPTY = "EMPTY"
-        WILDCAT = "WILDCAT"
-        JUMBO = "JUMBO"
-        PISTOL = "PISTOL"
+    SHOTGUN = "SHOTGUN"
+    I_FORM = "I_FORM"
+    SINGLEBACK = "SINGLEBACK"
+    EMPTY = "EMPTY"
+    WILDCAT = "WILDCAT"
+    JUMBO = "JUMBO"
+    PISTOL = "PISTOL"
 
 
 class OffensePersonnel:
@@ -3696,9 +3600,8 @@ class WasPressure:
 
     header = "was_pressure"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Route:
@@ -3708,19 +3611,18 @@ class Route:
 
     header = "route"
 
-    class values:
-        HITCH = "HITCH"
-        IN = "IN"
-        SCREEN = "SCREEN"
-        FLAT = "FLAT"
-        CROSS = "CROSS"
-        ANGLE = "ANGLE"
-        WHEEL = "WHEEL"
-        POST = "POST"
-        SLANT = "SLANT"
-        OUT = "OUT"
-        CORNER = "CORNER"
-        GO = "GO"
+    HITCH = "HITCH"
+    IN = "IN"
+    SCREEN = "SCREEN"
+    FLAT = "FLAT"
+    CROSS = "CROSS"
+    ANGLE = "ANGLE"
+    WHEEL = "WHEEL"
+    POST = "POST"
+    SLANT = "SLANT"
+    OUT = "OUT"
+    CORNER = "CORNER"
+    GO = "GO"
 
 
 class DefenseManZoneType:
@@ -3730,9 +3632,8 @@ class DefenseManZoneType:
 
     header = "defense_man_zone_type"
 
-    class values:
-        ZONE_COVERAGE = "ZONE_COVERAGE"
-        MAN_COVERAGE = "MAN_COVERAGE"
+    ZONE_COVERAGE = "ZONE_COVERAGE"
+    MAN_COVERAGE = "MAN_COVERAGE"
 
 
 class DefenseCoverageType:
@@ -3742,12 +3643,11 @@ class DefenseCoverageType:
 
     header = "defense_coverage_type"
 
-    class values:
-        COVER_3 = "COVER_3"
-        COVER_4 = "COVER_4"
-        COVER_1 = "COVER_1"
-        COVER_0 = "COVER_0"
-        COVER_6 = "COVER_6"
-        COVER_2 = "COVER_2"
-        MAN_2 = "2_MAN"
-        PREVENT = "PREVENT"
+    COVER_3 = "COVER_3"
+    COVER_4 = "COVER_4"
+    COVER_1 = "COVER_1"
+    COVER_0 = "COVER_0"
+    COVER_6 = "COVER_6"
+    COVER_2 = "COVER_2"
+    MAN_2 = "2_MAN"
+    PREVENT = "PREVENT"

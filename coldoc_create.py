@@ -160,10 +160,9 @@ def col_values(df: pandas.DataFrame, col: str) -> list[str]:
             values.remove(None)
         if len(values) > 0:
             lines = [""]
-            lines.append("\tclass values:")
             if values_binary(values):
-                lines.append("\t\tTRUE = 1")
-                lines.append("\t\tFALSE = 0")
+                lines.append("\tTRUE = 1")
+                lines.append("\tFALSE = 0")
                 return lines
             elif values_string(values):
                 for value in values:
@@ -178,7 +177,7 @@ def col_values(df: pandas.DataFrame, col: str) -> list[str]:
                     string = string.replace("/", "")
                     string = string.replace(",", "")
                     string = string.upper()
-                    lines.append("\t\t" + string + ' = "' + value + '"')
+                    lines.append("\t" + string + ' = "' + value + '"')
                 return lines
     return []
 

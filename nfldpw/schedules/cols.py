@@ -13,7 +13,7 @@ Header names are accesible as _column_.header.
 Some categorical columns provide encoded values.
 
 ```python
->>> cols.GameType.values.REG
+>>> cols.GameType.REG
 >>> "REG"
 ```
 
@@ -43,12 +43,11 @@ class GameType:
 
     header = "game_type"
 
-    class values:
-        REG = "REG"
-        WC = "WC"
-        DIV = "DIV"
-        CON = "CON"
-        SB = "SB"
+    REG = "REG"
+    WC = "WC"
+    DIV = "DIV"
+    CON = "CON"
+    SB = "SB"
 
 
 class Week:
@@ -74,12 +73,11 @@ class Weekday:
 
     header = "weekday"
 
-    class values:
-        THURSDAY = "Thursday"
-        SUNDAY = "Sunday"
-        MONDAY = "Monday"
-        FRIDAY = "Friday"
-        SATURDAY = "Saturday"
+    THURSDAY = "Thursday"
+    SUNDAY = "Sunday"
+    MONDAY = "Monday"
+    FRIDAY = "Friday"
+    SATURDAY = "Saturday"
 
 
 class Gametime:
@@ -129,9 +127,8 @@ class Location:
 
     header = "location"
 
-    class values:
-        HOME = "Home"
-        NEUTRAL = "Neutral"
+    HOME = "Home"
+    NEUTRAL = "Neutral"
 
 
 class Result:
@@ -301,9 +298,8 @@ class DivGame:
 
     header = "div_game"
 
-    class values:
-        TRUE = 1
-        FALSE = 0
+    TRUE = 1
+    FALSE = 0
 
 
 class Roof:
@@ -313,11 +309,10 @@ class Roof:
 
     header = "roof"
 
-    class values:
-        OUTDOORS = "outdoors"
-        CLOSED = "closed"
-        DOME = "dome"
-        OPEN = "open"
+    OUTDOORS = "outdoors"
+    CLOSED = "closed"
+    DOME = "dome"
+    OPEN = "open"
 
 
 class Surface:
@@ -327,13 +322,12 @@ class Surface:
 
     header = "surface"
 
-    class values:
-        GRASS = "grass"
-        FIELDTURF = "fieldturf"
-        SPORTTURF = "sportturf"
-        A_TURF = "a_turf"
-        ASTROTURF = "astroturf"
-        MATRIXTURF = "matrixturf"
+    GRASS = "grass"
+    FIELDTURF = "fieldturf"
+    SPORTTURF = "sportturf"
+    A_TURF = "a_turf"
+    ASTROTURF = "astroturf"
+    MATRIXTURF = "matrixturf"
 
 
 class Temp:
@@ -407,24 +401,23 @@ class Referee:
 
     header = "referee"
 
-    class values:
-        JOHN_HUSSEY = "John Hussey"
-        BRAD_ROGERS = "Brad Rogers"
-        TRA_BLAKE = "Tra Blake"
-        CLETE_BLAKEMAN = "Clete Blakeman"
-        CLAY_MARTIN = "Clay Martin"
-        SCOTT_NOVAK = "Scott Novak"
-        RON_TORBERT = "Ron Torbert"
-        ALEX_KEMP = "Alex Kemp"
-        ALAN_ECK = "Alan Eck"
-        CRAIG_WROLSTAD = "Craig Wrolstad"
-        BILL_VINOVICH = "Bill Vinovich"
-        BRAD_ALLEN = "Brad Allen"
-        SHAWN_HOCHULI = "Shawn Hochuli"
-        SHAWN_SMITH = "Shawn Smith"
-        ADRIAN_HILL = "Adrian Hill"
-        CARL_CHEFFERS = "Carl Cheffers"
-        LAND_CLARK = "Land Clark"
+    JOHN_HUSSEY = "John Hussey"
+    BRAD_ROGERS = "Brad Rogers"
+    TRA_BLAKE = "Tra Blake"
+    CLETE_BLAKEMAN = "Clete Blakeman"
+    CLAY_MARTIN = "Clay Martin"
+    SCOTT_NOVAK = "Scott Novak"
+    RON_TORBERT = "Ron Torbert"
+    ALEX_KEMP = "Alex Kemp"
+    ALAN_ECK = "Alan Eck"
+    CRAIG_WROLSTAD = "Craig Wrolstad"
+    BILL_VINOVICH = "Bill Vinovich"
+    BRAD_ALLEN = "Brad Allen"
+    SHAWN_HOCHULI = "Shawn Hochuli"
+    SHAWN_SMITH = "Shawn Smith"
+    ADRIAN_HILL = "Adrian Hill"
+    CARL_CHEFFERS = "Carl Cheffers"
+    LAND_CLARK = "Land Clark"
 
 
 class StadiumId:
@@ -442,37 +435,36 @@ class Stadium:
 
     header = "stadium"
 
-    class values:
-        GEHA_FIELD_AT_ARROWHEAD_STADIUM = "GEHA Field at Arrowhead Stadium"
-        MERCEDESBENZ_STADIUM = "Mercedes-Benz Stadium"
-        MT_BANK_STADIUM = "M&T Bank Stadium"
-        FIRSTENERGY_STADIUM = "FirstEnergy Stadium"
-        LUCAS_OIL_STADIUM = "Lucas Oil Stadium"
-        US_BANK_STADIUM = "U.S. Bank Stadium"
-        MERCEDESBENZ_SUPERDOME = "Mercedes-Benz Superdome"
-        ACRISURE_STADIUM = "Acrisure Stadium"
-        FEDEXFIELD = "FedExField"
-        SOLDIER_FIELD = "Soldier Field"
-        EMPOWER_FIELD_AT_MILE_HIGH = "Empower Field at Mile High"
-        SOFI_STADIUM = "SoFi Stadium"
-        GILLETTE_STADIUM = "Gillette Stadium"
-        LUMEN_FIELD = "Lumen Field"
-        METLIFE_STADIUM = "MetLife Stadium"
-        LINCOLN_FINANCIAL_FIELD = "Lincoln Financial Field"
-        NEW_ERA_FIELD = "New Era Field"
-        PAYCOR_STADIUM = "Paycor Stadium"
-        FORD_FIELD = "Ford Field"
-        NRG_STADIUM = "NRG Stadium"
-        TIAA_BANK_STADIUM = "TIAA Bank Stadium"
-        RAYMOND_JAMES_STADIUM = "Raymond James Stadium"
-        NISSAN_STADIUM = "Nissan Stadium"
-        STATE_FARM_STADIUM = "State Farm Stadium"
-        ATT_STADIUM = "AT&T Stadium"
-        BANK_OF_AMERICA_STADIUM = "Bank of America Stadium"
-        LEVIS_STADIUM = "Levi's Stadium"
-        LAMBEAU_FIELD = "Lambeau Field"
-        HARD_ROCK_STADIUM = "Hard Rock Stadium"
-        ALLEGIANT_STADIUM = "Allegiant Stadium"
-        WEMBLEY_STADIUM = "Wembley Stadium"
-        TOTTENHAM_STADIUM = "Tottenham Stadium"
-        DEUTSCHE_BANK_PARK = "Deutsche Bank Park"
+    GEHA_FIELD_AT_ARROWHEAD_STADIUM = "GEHA Field at Arrowhead Stadium"
+    MERCEDESBENZ_STADIUM = "Mercedes-Benz Stadium"
+    MT_BANK_STADIUM = "M&T Bank Stadium"
+    FIRSTENERGY_STADIUM = "FirstEnergy Stadium"
+    LUCAS_OIL_STADIUM = "Lucas Oil Stadium"
+    US_BANK_STADIUM = "U.S. Bank Stadium"
+    MERCEDESBENZ_SUPERDOME = "Mercedes-Benz Superdome"
+    ACRISURE_STADIUM = "Acrisure Stadium"
+    FEDEXFIELD = "FedExField"
+    SOLDIER_FIELD = "Soldier Field"
+    EMPOWER_FIELD_AT_MILE_HIGH = "Empower Field at Mile High"
+    SOFI_STADIUM = "SoFi Stadium"
+    GILLETTE_STADIUM = "Gillette Stadium"
+    LUMEN_FIELD = "Lumen Field"
+    METLIFE_STADIUM = "MetLife Stadium"
+    LINCOLN_FINANCIAL_FIELD = "Lincoln Financial Field"
+    NEW_ERA_FIELD = "New Era Field"
+    PAYCOR_STADIUM = "Paycor Stadium"
+    FORD_FIELD = "Ford Field"
+    NRG_STADIUM = "NRG Stadium"
+    TIAA_BANK_STADIUM = "TIAA Bank Stadium"
+    RAYMOND_JAMES_STADIUM = "Raymond James Stadium"
+    NISSAN_STADIUM = "Nissan Stadium"
+    STATE_FARM_STADIUM = "State Farm Stadium"
+    ATT_STADIUM = "AT&T Stadium"
+    BANK_OF_AMERICA_STADIUM = "Bank of America Stadium"
+    LEVIS_STADIUM = "Levi's Stadium"
+    LAMBEAU_FIELD = "Lambeau Field"
+    HARD_ROCK_STADIUM = "Hard Rock Stadium"
+    ALLEGIANT_STADIUM = "Allegiant Stadium"
+    WEMBLEY_STADIUM = "Wembley Stadium"
+    TOTTENHAM_STADIUM = "Tottenham Stadium"
+    DEUTSCHE_BANK_PARK = "Deutsche Bank Park"
