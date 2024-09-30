@@ -23,6 +23,20 @@ Some categorical columns provide encoded values.
 class GameId:
     """
     A human-readable game ID. It consists of: the season, an underscore, the two-digit week number, an underscore, the away team, an underscore, the home team. This is the primary identifier for a given game and is also used in various nflverse dataframes.
+
+    Example Values
+    --------------
+
+    `"2023_01_DET_KC"`
+
+    `"2023_01_CAR_ATL"`
+
+    `"2023_01_HOU_BAL"`
+
+    `"2023_01_CIN_CLE"`
+
+    `"2023_01_JAX_IND"`
+
     """
 
     header = "game_id"
@@ -31,6 +45,20 @@ class GameId:
 class Season:
     """
     The year of the NFL season. This represents the whole season, so regular season games that happen in January as well as playoff games will occur in the year after this number.
+
+    Example Values
+    --------------
+
+    `"2023"`
+
+    `"2023"`
+
+    `"2023"`
+
+    `"2023"`
+
+    `"2023"`
+
     """
 
     header = "season"
@@ -39,6 +67,20 @@ class Season:
 class GameType:
     """
     What type of game? One of REG, WC, DIV, CON, SB
+
+    Example Values
+    --------------
+
+    `"REG"`
+
+    `"REG"`
+
+    `"REG"`
+
+    `"REG"`
+
+    `"REG"`
+
     """
 
     header = "game_type"
@@ -53,6 +95,20 @@ class GameType:
 class Week:
     """
     The week of the NFL season the game occurs in. Please note that the `game_type` will differ for weeks &gt;= 18 because of the season expansion in 2021. Please use `game_type` to filter for regular season or postseason.
+
+    Example Values
+    --------------
+
+    `"1"`
+
+    `"1"`
+
+    `"1"`
+
+    `"1"`
+
+    `"1"`
+
     """
 
     header = "week"
@@ -61,6 +117,20 @@ class Week:
 class Gameday:
     """
     The date on which the game occurred.
+
+    Example Values
+    --------------
+
+    `"2023-09-07"`
+
+    `"2023-09-10"`
+
+    `"2023-09-10"`
+
+    `"2023-09-10"`
+
+    `"2023-09-10"`
+
     """
 
     header = "gameday"
@@ -69,6 +139,20 @@ class Gameday:
 class Weekday:
     """
     The day of the week on which the game occcured.
+
+    Example Values
+    --------------
+
+    `"Thursday"`
+
+    `"Sunday"`
+
+    `"Sunday"`
+
+    `"Sunday"`
+
+    `"Sunday"`
+
     """
 
     header = "weekday"
@@ -83,6 +167,20 @@ class Weekday:
 class Gametime:
     """
     The kickoff time of the game. This is represented in 24-hour time and the Eastern time zone, regardless of what time zone the game was being played in.
+
+    Example Values
+    --------------
+
+    `"20:20"`
+
+    `"13:00"`
+
+    `"13:00"`
+
+    `"13:00"`
+
+    `"13:00"`
+
     """
 
     header = "gametime"
@@ -91,6 +189,20 @@ class Gametime:
 class AwayTeam:
     """
     The away team.
+
+    Example Values
+    --------------
+
+    `"DET"`
+
+    `"CAR"`
+
+    `"HOU"`
+
+    `"CIN"`
+
+    `"JAX"`
+
     """
 
     header = "away_team"
@@ -99,6 +211,20 @@ class AwayTeam:
 class AwayScore:
     """
     The number of points the away team scored. Is NA for games which haven't yet been played.
+
+    Example Values
+    --------------
+
+    `21.0`
+
+    `10.0`
+
+    `9.0`
+
+    `3.0`
+
+    `31.0`
+
     """
 
     header = "away_score"
@@ -107,6 +233,20 @@ class AwayScore:
 class HomeTeam:
     """
     The home team. Note that this contains the designated home team for games which no team is playing at home such as Super Bowls or NFL International games.
+
+    Example Values
+    --------------
+
+    `"KC"`
+
+    `"ATL"`
+
+    `"BAL"`
+
+    `"CLE"`
+
+    `"IND"`
+
     """
 
     header = "home_team"
@@ -115,6 +255,20 @@ class HomeTeam:
 class HomeScore:
     """
     The number of points the home team scored. Is NA for games which haven't yet been played.
+
+    Example Values
+    --------------
+
+    `20.0`
+
+    `24.0`
+
+    `25.0`
+
+    `24.0`
+
+    `21.0`
+
     """
 
     header = "home_score"
@@ -123,6 +277,20 @@ class HomeScore:
 class Location:
     """
     Either Home if the home team is playing in their home stadium, or Neutral if the game is being played at a neutral location. This still shows as Home for games between the Giants and Jets even though they share the same home stadium.
+
+    Example Values
+    --------------
+
+    `"Home"`
+
+    `"Home"`
+
+    `"Home"`
+
+    `"Home"`
+
+    `"Home"`
+
     """
 
     header = "location"
@@ -134,6 +302,20 @@ class Location:
 class Result:
     """
     The number of points the home team scored minus the number of points the visiting team scored. Equals h_score - v_score. Is NA for games which haven't yet been played. Convenient for evaluating against the spread bets.
+
+    Example Values
+    --------------
+
+    `-1.0`
+
+    `14.0`
+
+    `16.0`
+
+    `21.0`
+
+    `-10.0`
+
     """
 
     header = "result"
@@ -142,6 +324,20 @@ class Result:
 class Total:
     """
     The sum of each team's score in the game. Equals h_score + v_score. Is NA for games which haven't yet been played. Convenient for evaluating over/under total bets.
+
+    Example Values
+    --------------
+
+    `41.0`
+
+    `34.0`
+
+    `34.0`
+
+    `27.0`
+
+    `52.0`
+
     """
 
     header = "total"
@@ -150,6 +346,20 @@ class Total:
 class Overtime:
     """
     Binary indicator of whether or not game went to overtime.
+
+    Example Values
+    --------------
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
     """
 
     header = "overtime"
@@ -158,6 +368,20 @@ class Overtime:
 class OldGameId:
     """
     The old id for the game assigned by the NFL.
+
+    Example Values
+    --------------
+
+    `"2023090700"`
+
+    `"2023091000"`
+
+    `"2023091001"`
+
+    `"2023091002"`
+
+    `"2023091003"`
+
     """
 
     header = "old_game_id"
@@ -166,6 +390,20 @@ class OldGameId:
 class Gsis:
     """
     The id of the game issued by the NFL Game Statistics &amp; Information System.
+
+    Example Values
+    --------------
+
+    `"59173"`
+
+    `"59174"`
+
+    `"59175"`
+
+    `"59176"`
+
+    `"59177"`
+
     """
 
     header = "gsis"
@@ -174,6 +412,20 @@ class Gsis:
 class NflDetailId:
     """
     The id of the game issued by NFL Detail.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
     """
 
     header = "nfl_detail_id"
@@ -182,6 +434,20 @@ class NflDetailId:
 class Pfr:
     """
     The id of the game issued by [Pro-Football-Reference](https://www.pro-football-reference.com/)
+
+    Example Values
+    --------------
+
+    `"202309070kan"`
+
+    `"202309100atl"`
+
+    `"202309100rav"`
+
+    `"202309100cle"`
+
+    `"202309100clt"`
+
     """
 
     header = "pfr"
@@ -190,6 +456,20 @@ class Pfr:
 class Pff:
     """
     The id of the game issued by [Pro Football Focus](https://www.pff.com/)
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
     """
 
     header = "pff"
@@ -198,6 +478,20 @@ class Pff:
 class Espn:
     """
     The id of the game issued by [ESPN](https://www.espn.com/)
+
+    Example Values
+    --------------
+
+    `"401547353"`
+
+    `"401547403"`
+
+    `"401547396"`
+
+    `"401547397"`
+
+    `"401547404"`
+
     """
 
     header = "espn"
@@ -206,6 +500,20 @@ class Espn:
 class Ftn:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
     """
 
     header = "ftn"
@@ -214,6 +522,20 @@ class Ftn:
 class AwayRest:
     """
     Days of rest that the away team is coming off of.
+
+    Example Values
+    --------------
+
+    `"7"`
+
+    `"7"`
+
+    `"7"`
+
+    `"7"`
+
+    `"7"`
+
     """
 
     header = "away_rest"
@@ -222,6 +544,20 @@ class AwayRest:
 class HomeRest:
     """
     Days of rest that the home team is coming off of.
+
+    Example Values
+    --------------
+
+    `"7"`
+
+    `"7"`
+
+    `"7"`
+
+    `"7"`
+
+    `"7"`
+
     """
 
     header = "home_rest"
@@ -230,6 +566,20 @@ class HomeRest:
 class AwayMoneyline:
     """
     Odds for away team to win the game.
+
+    Example Values
+    --------------
+
+    `164.0`
+
+    `160.0`
+
+    `380.0`
+
+    `-112.0`
+
+    `-205.0`
+
     """
 
     header = "away_moneyline"
@@ -238,6 +588,20 @@ class AwayMoneyline:
 class HomeMoneyline:
     """
     Odds for home team to win the game.
+
+    Example Values
+    --------------
+
+    `-198.0`
+
+    `-192.0`
+
+    `-500.0`
+
+    `-108.0`
+
+    `170.0`
+
     """
 
     header = "home_moneyline"
@@ -246,6 +610,20 @@ class HomeMoneyline:
 class SpreadLine:
     """
     The spread line for the game. A positive number means the home team was favored by that many points, a negative number means the away team was favored by that many points. This lines up with the result column.
+
+    Example Values
+    --------------
+
+    `4.0`
+
+    `3.5`
+
+    `9.5`
+
+    `-1.0`
+
+    `-4.0`
+
     """
 
     header = "spread_line"
@@ -254,6 +632,20 @@ class SpreadLine:
 class AwaySpreadOdds:
     """
     Odds for away team to cover the spread.
+
+    Example Values
+    --------------
+
+    `-110.0`
+
+    `-108.0`
+
+    `-110.0`
+
+    `-105.0`
+
+    `-108.0`
+
     """
 
     header = "away_spread_odds"
@@ -262,6 +654,20 @@ class AwaySpreadOdds:
 class HomeSpreadOdds:
     """
     Odds for home team to cover the spread.
+
+    Example Values
+    --------------
+
+    `-110.0`
+
+    `-112.0`
+
+    `-110.0`
+
+    `-115.0`
+
+    `-112.0`
+
     """
 
     header = "home_spread_odds"
@@ -270,6 +676,20 @@ class HomeSpreadOdds:
 class TotalLine:
     """
     The total line for the game.
+
+    Example Values
+    --------------
+
+    `53.0`
+
+    `40.5`
+
+    `43.5`
+
+    `46.5`
+
+    `45.5`
+
     """
 
     header = "total_line"
@@ -278,6 +698,20 @@ class TotalLine:
 class UnderOdds:
     """
     Odds that total score of game would be under the total_line.
+
+    Example Values
+    --------------
+
+    `-110.0`
+
+    `-110.0`
+
+    `-110.0`
+
+    `-110.0`
+
+    `-110.0`
+
     """
 
     header = "under_odds"
@@ -286,6 +720,20 @@ class UnderOdds:
 class OverOdds:
     """
     Odds that total score of game would be over the total_ine.
+
+    Example Values
+    --------------
+
+    `-110.0`
+
+    `-110.0`
+
+    `-110.0`
+
+    `-110.0`
+
+    `-110.0`
+
     """
 
     header = "over_odds"
@@ -294,6 +742,20 @@ class OverOdds:
 class DivGame:
     """
     Binary indicator of whether or not game was played by 2 teams in the same division.
+
+    Example Values
+    --------------
+
+    `"0"`
+
+    `"1"`
+
+    `"0"`
+
+    `"1"`
+
+    `"1"`
+
     """
 
     header = "div_game"
@@ -305,6 +767,20 @@ class DivGame:
 class Roof:
     """
     What was the status of the stadium's roof? One of outdoors, open, closed, dome
+
+    Example Values
+    --------------
+
+    `"outdoors"`
+
+    `"closed"`
+
+    `"outdoors"`
+
+    `"outdoors"`
+
+    `"closed"`
+
     """
 
     header = "roof"
@@ -318,6 +794,20 @@ class Roof:
 class Surface:
     """
     What type of ground the game was played on
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
     """
 
     header = "surface"
@@ -333,6 +823,20 @@ class Surface:
 class Temp:
     """
     The temperature at the stadium (for outdoors and open only)
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
     """
 
     header = "temp"
@@ -341,6 +845,20 @@ class Temp:
 class Wind:
     """
     The speed of the wind in miles/hour (for outdoors and open only)
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
     """
 
     header = "wind"
@@ -349,6 +867,20 @@ class Wind:
 class AwayQbId:
     """
     GSIS Player ID for away team starting quarterback.
+
+    Example Values
+    --------------
+
+    `"00-0033106"`
+
+    `"00-0039150"`
+
+    `"00-0039163"`
+
+    `"00-0036442"`
+
+    `"00-0036971"`
+
     """
 
     header = "away_qb_id"
@@ -357,6 +889,20 @@ class AwayQbId:
 class HomeQbId:
     """
     GSIS Player ID for home team starting quarterback.
+
+    Example Values
+    --------------
+
+    `"00-0033873"`
+
+    `"00-0038122"`
+
+    `"00-0034796"`
+
+    `"00-0033537"`
+
+    `"00-0039164"`
+
     """
 
     header = "home_qb_id"
@@ -365,6 +911,20 @@ class HomeQbId:
 class AwayQbName:
     """
     Name of away team starting QB.
+
+    Example Values
+    --------------
+
+    `"Jared Goff"`
+
+    `"Bryce Young"`
+
+    `"C.J. Stroud"`
+
+    `"Joe Burrow"`
+
+    `"Trevor Lawrence"`
+
     """
 
     header = "away_qb_name"
@@ -373,6 +933,20 @@ class AwayQbName:
 class HomeQbName:
     """
     Name of home team starting QB.
+
+    Example Values
+    --------------
+
+    `"Patrick Mahomes"`
+
+    `"Desmond Ridder"`
+
+    `"Lamar Jackson"`
+
+    `"Deshaun Watson"`
+
+    `"Anthony Richardson"`
+
     """
 
     header = "home_qb_name"
@@ -381,6 +955,20 @@ class HomeQbName:
 class AwayCoach:
     """
     Name of the head coach of the away team
+
+    Example Values
+    --------------
+
+    `"Dan Campbell"`
+
+    `"Frank Reich"`
+
+    `"DeMeco Ryans"`
+
+    `"Zac Taylor"`
+
+    `"Doug Pederson"`
+
     """
 
     header = "away_coach"
@@ -389,6 +977,20 @@ class AwayCoach:
 class HomeCoach:
     """
     Name of the head coach of the home team
+
+    Example Values
+    --------------
+
+    `"Andy Reid"`
+
+    `"Arthur Smith"`
+
+    `"John Harbaugh"`
+
+    `"Kevin Stefanski"`
+
+    `"Shane Steichen"`
+
     """
 
     header = "home_coach"
@@ -397,6 +999,20 @@ class HomeCoach:
 class Referee:
     """
     Name of the game's referee (head official)
+
+    Example Values
+    --------------
+
+    `"John Hussey"`
+
+    `"Brad Rogers"`
+
+    `"Tra Blake"`
+
+    `"Clete Blakeman"`
+
+    `"Clay Martin"`
+
     """
 
     header = "referee"
@@ -423,6 +1039,20 @@ class Referee:
 class StadiumId:
     """
     ID of Stadium that game took place in
+
+    Example Values
+    --------------
+
+    `"KAN00"`
+
+    `"ATL97"`
+
+    `"BAL00"`
+
+    `"CLE00"`
+
+    `"IND00"`
+
     """
 
     header = "stadium_id"
@@ -431,6 +1061,20 @@ class StadiumId:
 class Stadium:
     """
     Name of the stadium
+
+    Example Values
+    --------------
+
+    `"GEHA Field at Arrowhead Stadium"`
+
+    `"Mercedes-Benz Stadium"`
+
+    `"M&T Bank Stadium"`
+
+    `"FirstEnergy Stadium"`
+
+    `"Lucas Oil Stadium"`
+
     """
 
     header = "stadium"

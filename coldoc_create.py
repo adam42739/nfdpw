@@ -195,11 +195,36 @@ def col_values(df: pandas.DataFrame, col: str) -> list[str]:
     return []
 
 
+NUM_EXAMPLE_VALUES = 5
+
+
+def example_values(df: pandas.DataFrame, col: str) -> list[str]:
+    lines = []
+    lines.append("")
+    lines.append("\tExample Values")
+    lines.append("\t--------------")
+    lines.append("")
+    for i in range(0, NUM_EXAMPLE_VALUES):
+        value = df[col].iloc[i]
+        if (
+            isinstance(value, int)
+            or isinstance(value, float)
+            or isinstance(value, numpy.float32)
+            or isinstance(value, numpy.float64)
+        ):
+            lines.append("\t`" + str(value) + "`")
+        else:
+            lines.append('\t`"' + str(value) + '"`')
+        lines.append("")
+    return lines
+
+
 def pbp_col(df: pandas.DataFrame, col: str, tables: list[list[list[str]]]) -> list[str]:
     lines = []
     lines.append("class " + format_col(col) + ":")
     lines.append('\t"""')
     lines.append("\t" + tables_find(tables, col))
+    lines += example_values(df, col)
     lines.append('\t"""')
     lines.append("")
     lines.append('\theader = "' + col + '"')
@@ -235,6 +260,7 @@ def schedules_col(
     lines.append("class " + format_col(col) + ":")
     lines.append('\t"""')
     lines.append("\t" + tables_find(tables, col))
+    lines += example_values(df, col)
     lines.append('\t"""')
     lines.append("")
     lines.append('\theader = "' + col + '"')
@@ -262,6 +288,7 @@ def rosters_col(
     lines.append("class " + format_col(col) + ":")
     lines.append('\t"""')
     lines.append("\t" + tables_find(tables, col))
+    lines += example_values(df, col)
     lines.append('\t"""')
     lines.append("")
     lines.append('\theader = "' + col + '"')
@@ -289,6 +316,7 @@ def players_col(
     lines.append("class " + format_col(col) + ":")
     lines.append('\t"""')
     lines.append("\t" + tables_find(tables, col))
+    lines += example_values(df, col)
     lines.append('\t"""')
     lines.append("")
     lines.append('\theader = "' + col + '"')

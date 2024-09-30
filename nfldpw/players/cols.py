@@ -23,6 +23,20 @@ Some categorical columns provide encoded values.
 class Status:
     """
     Roster status: describes things like Active, Inactive, Injured Reserve, Practice Squad etc
+
+    Example Values
+    --------------
+
+    `"RET"`
+
+    `"ACT"`
+
+    `"DEV"`
+
+    `"ACT"`
+
+    `"RES"`
+
     """
 
     header = "status"
@@ -53,6 +67,20 @@ class Status:
 class DisplayName:
     """
     Player's displayed football name.
+
+    Example Values
+    --------------
+
+    `"'Omar Ellison"`
+
+    `"A'Shawn Robinson"`
+
+    `"A.J. Arcuri"`
+
+    `"A.J. Barner"`
+
+    `"A.J. Bouye"`
+
     """
 
     header = "display_name"
@@ -61,6 +89,20 @@ class DisplayName:
 class FirstName:
     """
     First name as per NFL.com
+
+    Example Values
+    --------------
+
+    `"'Omar"`
+
+    `"A'Shawn"`
+
+    `"A.J."`
+
+    `"A.J."`
+
+    `"Arlandus"`
+
     """
 
     header = "first_name"
@@ -69,6 +111,20 @@ class FirstName:
 class LastName:
     """
     Last name as per NFL.com
+
+    Example Values
+    --------------
+
+    `"Ellison"`
+
+    `"Robinson"`
+
+    `"Arcuri"`
+
+    `"Barner"`
+
+    `"Bouye"`
+
     """
 
     header = "last_name"
@@ -77,6 +133,20 @@ class LastName:
 class EsbId:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"ELL711319"`
+
+    `"ROB367960"`
+
+    `"ARC716900"`
+
+    `"BAR235889"`
+
+    `"BOU651714"`
+
     """
 
     header = "esb_id"
@@ -85,6 +155,20 @@ class EsbId:
 class GsisId:
     """
     NFL Game Stats and Information Services - usually starts with 00- and is followed by a series of integers.
+
+    Example Values
+    --------------
+
+    `"00-0004866"`
+
+    `"00-0032889"`
+
+    `"00-0037845"`
+
+    `"00-0039793"`
+
+    `"00-0030228"`
+
     """
 
     header = "gsis_id"
@@ -93,6 +177,20 @@ class GsisId:
 class BirthDate:
     """
     Birthdate, as recorded by Sleeper API
+
+    Example Values
+    --------------
+
+    `"1971-10-08"`
+
+    `"1995-03-21"`
+
+    `"1997-08-13"`
+
+    `"2002-05-03"`
+
+    `"1991-08-16"`
+
     """
 
     header = "birth_date"
@@ -101,6 +199,20 @@ class BirthDate:
 class CollegeName:
     """
     Player's college.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"Alabama"`
+
+    `"Michigan State"`
+
+    `"Michigan"`
+
+    `"Central Florida"`
+
     """
 
     header = "college_name"
@@ -109,6 +221,20 @@ class CollegeName:
 class PositionGroup:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"WR"`
+
+    `"DL"`
+
+    `"OL"`
+
+    `"TE"`
+
+    `"DB"`
+
     """
 
     header = "position_group"
@@ -128,6 +254,20 @@ class PositionGroup:
 class Position:
     """
     Position as reported by MFL
+
+    Example Values
+    --------------
+
+    `"WR"`
+
+    `"DT"`
+
+    `"T"`
+
+    `"TE"`
+
+    `"CB"`
+
     """
 
     header = "position"
@@ -169,6 +309,20 @@ class Position:
 class JerseyNumber:
     """
     Jersey number. Often useful for joins by name/team/jersey.
+
+    Example Values
+    --------------
+
+    `84.0`
+
+    `94.0`
+
+    `61.0`
+
+    `88.0`
+
+    `24.0`
+
     """
 
     header = "jersey_number"
@@ -177,6 +331,20 @@ class JerseyNumber:
 class Height:
     """
     height in inches
+
+    Example Values
+    --------------
+
+    `73.0`
+
+    `76.0`
+
+    `79.0`
+
+    `78.0`
+
+    `72.0`
+
     """
 
     header = "height"
@@ -185,6 +353,20 @@ class Height:
 class Weight:
     """
     weight in pounds
+
+    Example Values
+    --------------
+
+    `200.0`
+
+    `330.0`
+
+    `320.0`
+
+    `251.0`
+
+    `191.0`
+
     """
 
     header = "weight"
@@ -193,6 +375,20 @@ class Weight:
 class YearsOfExperience:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"2"`
+
+    `"9"`
+
+    `"2"`
+
+    `"0"`
+
+    `"8"`
+
     """
 
     header = "years_of_experience"
@@ -201,6 +397,20 @@ class YearsOfExperience:
 class TeamAbbr:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"LAC"`
+
+    `"CAR"`
+
+    `"LA"`
+
+    `"SEA"`
+
+    `"CAR"`
+
     """
 
     header = "team_abbr"
@@ -209,6 +419,20 @@ class TeamAbbr:
 class TeamSeq:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `1.0`
+
+    `nan`
+
+    `nan`
+
+    `1.0`
+
     """
 
     header = "team_seq"
@@ -217,6 +441,20 @@ class TeamSeq:
 class CurrentTeamId:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"4400"`
+
+    `"0750"`
+
+    `"2510"`
+
+    `"4600"`
+
+    `"0750"`
+
     """
 
     header = "current_team_id"
@@ -225,6 +463,20 @@ class CurrentTeamId:
 class FootballName:
     """
     Player's displayed football name.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"A'Shawn"`
+
+    `"A.J."`
+
+    `"A.J."`
+
+    `"A.J."`
+
     """
 
     header = "football_name"
@@ -233,6 +485,20 @@ class FootballName:
 class EntryYear:
     """
     Player's first year rostered on an NFL team.
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `2016.0`
+
+    `2022.0`
+
+    `2024.0`
+
+    `2013.0`
+
     """
 
     header = "entry_year"
@@ -241,6 +507,20 @@ class EntryYear:
 class RookieYear:
     """
     Player's rookie year.
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `2016.0`
+
+    `2022.0`
+
+    `2024.0`
+
+    `2013.0`
+
     """
 
     header = "rookie_year"
@@ -249,6 +529,20 @@ class RookieYear:
 class DraftClub:
     """
     NFL team that drafted the player (if applicable).
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"DET"`
+
+    `"LA"`
+
+    `"SEA"`
+
+    `"None"`
+
     """
 
     header = "draft_club"
@@ -257,6 +551,20 @@ class DraftClub:
 class DraftNumber:
     """
     Player's draft number.
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `46.0`
+
+    `261.0`
+
+    `121.0`
+
+    `nan`
+
     """
 
     header = "draft_number"
@@ -265,6 +573,20 @@ class DraftNumber:
 class CollegeConference:
     """
     Player's college conference.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"Southeastern Conference"`
+
+    `"Big Ten Conference"`
+
+    `"Big Ten Conference"`
+
+    `"American Athletic Conference"`
+
     """
 
     header = "college_conference"
@@ -381,6 +703,20 @@ class CollegeConference:
 class StatusDescriptionAbbr:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"A01"`
+
+    `"P01"`
+
+    `"A01"`
+
+    `"R01"`
+
     """
 
     header = "status_description_abbr"
@@ -430,6 +766,20 @@ class StatusDescriptionAbbr:
 class StatusShortDescription:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"Active"`
+
+    `"Practice Squad"`
+
+    `"Active"`
+
+    `"R/Injured"`
+
     """
 
     header = "status_short_description"
@@ -480,6 +830,20 @@ class StatusShortDescription:
 class GsisItId:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `43335.0`
+
+    `54726.0`
+
+    `57242.0`
+
+    `40688.0`
+
     """
 
     header = "gsis_it_id"
@@ -488,6 +852,20 @@ class GsisItId:
 class ShortName:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"A.Robinson"`
+
+    `"A.Arcuri"`
+
+    `"A.Barner"`
+
+    `"A.Bouye"`
+
     """
 
     header = "short_name"
@@ -496,6 +874,20 @@ class ShortName:
 class SmartId:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"3200454c-4c71-1319-728e-d49d3d236f8f"`
+
+    `"3200524f-4236-7960-bf20-bc060ac0f49c"`
+
+    `"32004152-4371-6900-5185-8cdd66b2ad11"`
+
+    `"32004241-5223-5889-95d9-0ba3aeeb36ed"`
+
+    `"3200424f-5565-1714-cb38-07c822111a12"`
+
     """
 
     header = "smart_id"
@@ -504,6 +896,20 @@ class SmartId:
 class Headshot:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"https://static.www.nfl.com/image/private/f_auto,q_auto/league/qgiwxchd1lmgszfunys8"`
+
+    `"None"`
+
+    `"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/msnzbeyjoemcas9dm8vt"`
+
+    `"https://static.www.nfl.com/image/private/f_auto,q_auto/league/cpgi2hbhnmvs1oczkzas"`
+
     """
 
     header = "headshot"
@@ -512,6 +918,20 @@ class Headshot:
 class Suffix:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
     """
 
     header = "suffix"
@@ -532,6 +952,20 @@ class Suffix:
 class UniformNumber:
     """
     No documentation available.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"94"`
+
+    `"61"`
+
+    `"88"`
+
+    `"24"`
+
     """
 
     header = "uniform_number"
@@ -540,6 +974,20 @@ class UniformNumber:
 class DraftRound:
     """
     Round of draft.
+
+    Example Values
+    --------------
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
+    `"None"`
+
     """
 
     header = "draft_round"
