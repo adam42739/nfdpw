@@ -20,4 +20,10 @@ Schedules data:
 >>> import nfldpw.schedules as schedules
 ```
 
+Rosters data:
+
+```python
+>>> import nfldpw.rosters as rosters
+```
+
 """
