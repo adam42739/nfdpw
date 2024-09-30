@@ -8,7 +8,7 @@ setup(
     author="Adam Lynch",
     author_email="aclynch@umich.edu",
     license="MIT License",
-    packages=["nfldpw", "nfldpw.pbp", "nfldpw.schedules"],
+    packages=["nfldpw", "nfldpw.pbp", "nfldpw.schedules", "nfldpw.rosters"],
     install_requires=[
         "nfl_data_py>=0.3.3",
     ],

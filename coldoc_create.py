@@ -2,6 +2,7 @@ import nfldpw
 import requests
 import pandas
 import nfldpw.pbp
+import nfldpw.rosters
 import nfldpw.schedules
 import io
 import numpy
@@ -16,9 +17,14 @@ PARTICIPATION_DICT = (
     "https://nflreadr.nflverse.com/articles/dictionary_participation.html"
 )
 SCHEDULES_DICT = "https://nflreadr.nflverse.com/articles/dictionary_schedules.html"
+ROSTERS_DICT = "https://nflreadr.nflverse.com/articles/dictionary_rosters.html"
+PLAYER_STATS_DICT = (
+    "https://nflreadr.nflverse.com/articles/dictionary_player_stats.html"
+)
 
 PBP_URLS = [PBP_DICT, NGS_DICT, PARTICIPATION_DICT]
 SCHEDULES_URLS = [SCHEDULES_DICT]
+ROSTERS_URLS = [ROSTERS_DICT, PLAYER_STATS_DICT]
 
 
 def get_nflverse_dict(url: str) -> list[list[str]]:
@@ -52,11 +58,24 @@ def format_col(col: str) -> str:
     return new_col
 
 
+UNFOUND_DOCSTINGS = {
+    "football_name": "Player's displayed football name.",
+    "entry_year": "Player's first year rostered on an NFL team.",
+    "rookie_year": "Player's rookie year.",
+    "draft_club": "NFL team that drafted the player (if applicable).",
+    "draft_number": "Player's draft number.",
+    "age": "Player's current age",
+}
+
+
 def tables_find(tables: list[list[list[str]]], col: str) -> str:
     for table in tables:
         for i in range(0, len(table[0])):
             if table[0][i] == col:
                 return table[1][i]
+    for key in UNFOUND_DOCSTINGS:
+        if col == key:
+            return UNFOUND_DOCSTINGS[key]
     print("FAILED TO FIND COLUMN:", col)
     return "No documentation available."
 
@@ -99,6 +118,8 @@ PBP_NOT_KEEP = [
     "fantasy",
     "gameday",
     "pfr",
+    "headshot_url",
+    "draft_club",
 ]
 
 
@@ -147,6 +168,7 @@ def col_values(df: pandas.DataFrame, col: str) -> list[str]:
             elif values_string(values):
                 for value in values:
                     string = value.replace("2_MAN", "MAN_2")
+                    string = string.replace("&amp;", "AND")
                     string = string.replace(" ", "_")
                     string = string.replace(".", "")
                     string = string.replace("-", "")
@@ -221,4 +243,31 @@ def schedules():
     lines_write(lines, file_path)
 
 
-schedules()
+def rosters_col(
+    df: pandas.DataFrame, col: str, tables: list[list[list[str]]]
+) -> list[str]:
+    lines = []
+    lines.append("class " + format_col(col) + ":")
+    lines.append('\t"""')
+    lines.append("\t" + tables_find(tables, col))
+    lines.append('\t"""')
+    lines.append("")
+    lines.append('\theader = "' + col + '"')
+    lines += col_values(df, col)
+    return lines
+
+
+def rosters():
+    tables = []
+    for url in ROSTERS_URLS:
+        tables.append(get_nflverse_dict(url))
+    df = nfldpw.rosters.get([2023], CACHE)
+    lines = []
+    for col in df.columns:
+        lines += rosters_col(df, col, tables)
+        lines.append("")
+    file_path = "nfldpw/rosters/cols.py"
+    lines_write(lines, file_path)
+
+
+rosters()

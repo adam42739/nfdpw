@@ -11,6 +11,10 @@ def fname_schedules(season: int) -> str:
     return "schedules-" + str(season)
 
 
+def fname_rosters(season: int) -> str:
+    return "rosters-" + str(season)
+
+
 def load(cache_path: str, fname: str) -> pandas.DataFrame:
     path = cache_path + fname + ".parq"
     return pandas.read_parquet(path)
@@ -57,3 +61,15 @@ def load_schedules_mdata(cache_path: str) -> dict:
 
 def dump_schedules_mdata(mdata: dict, cache_path: str):
     dump_mdata(mdata, cache_path, "schedules")
+
+
+def load_rosters_mdata(cache_path: str) -> dict:
+    mdata = load_mdata(cache_path, "rosters")
+    new_mdata = {}
+    for season in mdata:
+        new_mdata[int(season)] = True
+    return new_mdata
+
+
+def dump_rosters_mdata(mdata: dict, cache_path: str):
+    dump_mdata(mdata, cache_path, "rosters")

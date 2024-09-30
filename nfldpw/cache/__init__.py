@@ -8,3 +8,6 @@ from .cache import dump_pbp_mdata
 from .cache import fname_schedules
 from .cache import load_schedules_mdata
 from .cache import dump_schedules_mdata
+from .cache import load_rosters_mdata
+from .cache import dump_rosters_mdata
+from .cache import fname_rosters
