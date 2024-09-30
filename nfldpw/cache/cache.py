@@ -15,6 +15,10 @@ def fname_rosters(season: int) -> str:
     return "rosters-" + str(season)
 
 
+def fname_players() -> str:
+    return "players"
+
+
 def load(cache_path: str, fname: str) -> pandas.DataFrame:
     path = cache_path + fname + ".parq"
     return pandas.read_parquet(path)

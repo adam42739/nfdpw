@@ -26,4 +26,10 @@ Rosters data:
 >>> import nfldpw.rosters as rosters
 ```
 
+Players data:
+
+```python
+>>> import nfldpw.players as players
+```
+
 """
