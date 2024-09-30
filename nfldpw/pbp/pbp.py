@@ -24,7 +24,7 @@ def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
         Seasons to get play-by-play data for
 
     cache_path : str = None
-        Path to a directory where cache files will be stored
+        Path to a directory where cache files are stored
 
     Returns
     -------
