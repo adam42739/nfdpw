@@ -1,7 +1,7 @@
 """
-=================
+===============
 Rosters columns
-=================
+===============
 
 Header names are accesible as _column_.header.
 
