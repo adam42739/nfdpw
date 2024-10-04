@@ -18,6 +18,8 @@ setup(
     ],
     install_requires=[
         "nfl_data_py>=0.3.3",
+        "requests>=2.32.3",
+        "lxml>=5.3.0"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

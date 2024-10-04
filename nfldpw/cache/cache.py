@@ -16,7 +16,10 @@ def fname_rosters(season: int) -> str:
 
 
 def fname_players() -> str:
-    return "players"
+    return "players-"
+
+def fname_superbowls() -> str:
+    return "sbowls"
 
 
 def load(cache_path: str, fname: str) -> pandas.DataFrame:
