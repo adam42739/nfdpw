@@ -4,8 +4,9 @@ from .. import cache
 from .. import sbowls
 
 
-def _season_complete(df: pandas.DataFrame) -> bool:
-    sb_cands = pandas.to_datetime(df["game_date"]).isin(sbowls.DATES).sum()
+def _season_complete(df: pandas.DataFrame, cache_path: str) -> bool:
+    sb_dates = sbowls.load_superbowl_dates(cache_path)
+    sb_cands = pandas.to_datetime(df["game_date"]).isin(sb_dates).sum()
     complete = sb_cands > 0
     return complete
 
@@ -45,7 +46,7 @@ def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
                 dfs.append(cache.load(cache_path, cache.fname_pbp(season)))
             else:
                 df = nfl_data_py.import_pbp_data([season])
-                if _season_complete(df):
+                if _season_complete(df, cache_path):
                     cache.dump(df, cache_path, cache.fname_pbp(season))
                     mdata[season] = True
                     cache.dump_pbp_mdata(mdata, cache_path)

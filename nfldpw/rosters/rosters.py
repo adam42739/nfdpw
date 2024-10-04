@@ -2,13 +2,18 @@ import nfl_data_py
 from .. import cache
 import pandas
 from .. import sbowls
+import datetime
 
 
-def _season_complete(df: pandas.DataFrame) -> bool:
-    for sb in sbowls.WEEKS:
-        count = ((df["season"] == sb["season"]) & (df["week"] == sb["week"])).sum()
-        if count > 0:
-            return True
+DAYS_GREATER = 14
+
+
+def _season_complete(season: int, cache_path: str) -> bool:
+    sb_dates = sbowls.load_superbowl_dates(cache_path)
+    for date in sb_dates:
+        if date.year - 1 == season:
+            if datetime.datetime.today() > date + datetime.timedelta(DAYS_GREATER):
+                return True
     return False
 
 
@@ -47,7 +52,7 @@ def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
                 dfs.append(cache.load(cache_path, cache.fname_rosters(season)))
             else:
                 df = nfl_data_py.import_weekly_rosters([season])
-                if _season_complete(df):
+                if _season_complete(season, cache_path):
                     cache.dump(df, cache_path, cache.fname_rosters(season))
                     mdata[season] = True
                     cache.dump_rosters_mdata(mdata, cache_path)
