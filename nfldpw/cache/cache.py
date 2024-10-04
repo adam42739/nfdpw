@@ -50,7 +50,7 @@ def load_pbp_mdata(cache_path: str) -> dict:
     mdata = load_mdata(cache_path, "pbp")
     new_mdata = {}
     for season in mdata:
-        new_mdata[int(season)] = True
+        new_mdata[int(season)] = mdata[season]
     return new_mdata
 
 

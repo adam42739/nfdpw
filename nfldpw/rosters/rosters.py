@@ -17,7 +17,9 @@ def _season_complete(season: int, cache_path: str) -> bool:
     return False
 
 
-def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
+def get(
+    seasons: list[int], cache_path: str = None, update_last_season: bool = False
+) -> pandas.DataFrame:
     """
     Get roster data for the list of seasons provided.
     If a cache path is provided, data will be read from the cache
@@ -32,6 +34,9 @@ def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
 
     cache_path : str = None
         Path to a directory where cache files are stored
+
+    update_last_season : bool = False
+        Whether cached seasons that are incomplete should be reloaded (i.e. after a new week has ended).
 
     Returns
     -------
@@ -48,16 +53,23 @@ def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
         mdata = cache.load_rosters_mdata(cache_path)
         dfs = []
         for season in seasons:
+            from_cache = True
             if season in mdata:
+                if not mdata[season] and update_last_season:
+                    from_cache = False
+            else:
+                from_cache = False
+            if from_cache:
                 dfs.append(cache.load(cache_path, cache.fname_rosters(season)))
             else:
                 df = nfl_data_py.import_weekly_rosters([season])
                 if _season_complete(season, cache_path):
-                    cache.dump(df, cache_path, cache.fname_rosters(season))
                     mdata[season] = True
-                    cache.dump_rosters_mdata(mdata, cache_path)
+                else:
+                    mdata[season] = False
+                cache.dump(df, cache_path, cache.fname_rosters(season))
+                cache.dump_rosters_mdata(mdata, cache_path)
                 dfs.append(df)
-
     else:
         for season in seasons:
             dfs.append(nfl_data_py.import_seasonal_rosters([season]))
