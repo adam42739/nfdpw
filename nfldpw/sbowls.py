@@ -1,132 +1,73 @@
 import datetime
-
-DATES = [
-    "1967-01-15",
-    "1968-01-14",
-    "1969-01-12",
-    "1970-01-11",
-    "1971-01-17",
-    "1972-01-16",
-    "1973-01-14",
-    "1974-01-13",
-    "1975-01-12",
-    "1976-01-18",
-    "1977-01-09",
-    "1978-01-15",
-    "1979-01-21",
-    "1980-01-20",
-    "1981-01-25",
-    "1982-01-24",
-    "1983-01-30",
-    "1984-01-22",
-    "1985-01-20",
-    "1986-01-26",
-    "1987-01-25",
-    "1988-01-31",
-    "1989-01-22",
-    "1990-01-28",
-    "1991-01-27",
-    "1992-01-26",
-    "1993-01-31",
-    "1994-01-30",
-    "1995-01-29",
-    "1996-01-28",
-    "1997-01-26",
-    "1998-01-25",
-    "1999-01-31",
-    "2000-01-30",
-    "2001-01-28",
-    "2002-02-03",
-    "2003-01-26",
-    "2004-02-01",
-    "2005-02-06",
-    "2006-02-05",
-    "2007-02-04",
-    "2008-02-03",
-    "2009-02-01",
-    "2010-02-07",
-    "2011-02-06",
-    "2012-02-05",
-    "2013-02-03",
-    "2014-02-02",
-    "2015-02-01",
-    "2016-02-07",
-    "2017-02-05",
-    "2018-02-04",
-    "2019-02-03",
-    "2020-02-02",
-    "2021-02-07",
-    "2022-02-13",
-    "2023-02-12",
-    "2024-02-11",
-    "2025-02-09",
-]
+import pandas
+import requests
+import io
+import json
+from .cache import cache
+import os
 
 
-def datetime_dates():
-    for i in range(0, len(DATES)):
-        DATES[i] = datetime.datetime.strptime(DATES[i], "%Y-%m-%d")
+SBOWL_LINK = "https://en.wikipedia.org/wiki/List_of_Super_Bowl_champions"
+PAST_BOWLS_TABLE_INDEX = 1
+FUTURE_BOWLS_TABLE_INDEX = 2
 
 
-datetime_dates()
+def _parse_raw_date(date_raw: str) -> datetime.datetime:
+    count = 0
+    index = 0
+    while index < len(date_raw):
+        if date_raw[index] == " ":
+            count += 1
+            if count == 3:
+                break
+        index += 1
+    date_str = date_raw[:index]
+    return datetime.datetime.strptime(date_str, "%B %d, %Y")
 
-WEEKS = [
-    {"season": 2023, "week": 22},
-    {"season": 2022, "week": 22},
-    {"season": 2021, "week": 22},
-    {"season": 2020, "week": 21},
-    {"season": 2019, "week": 21},
-    {"season": 2018, "week": 21},
-    {"season": 2017, "week": 21},
-    {"season": 2016, "week": 21},
-    {"season": 2015, "week": 21},
-    {"season": 2014, "week": 21},
-    {"season": 2013, "week": 21},
-    {"season": 2012, "week": 21},
-    {"season": 2011, "week": 21},
-    {"season": 2010, "week": 21},
-    {"season": 2009, "week": 21},
-    {"season": 2008, "week": 21},
-    {"season": 2007, "week": 21},
-    {"season": 2006, "week": 21},
-    {"season": 2005, "week": 21},
-    {"season": 2004, "week": 21},
-    {"season": 2003, "week": 21},
-    {"season": 2002, "week": 21},
-    {"season": 2001, "week": 21},
-    {"season": 2000, "week": 21},
-    {"season": 1999, "week": 21},
-    {"season": 1998, "week": 21},
-    {"season": 1997, "week": 21},
-    {"season": 1996, "week": 21},
-    {"season": 1995, "week": 21},
-    {"season": 1994, "week": 21},
-    {"season": 1993, "week": 21},
-    {"season": 1992, "week": 21},
-    {"season": 1991, "week": 21},
-    {"season": 1990, "week": 21},
-    {"season": 1989, "week": 20},
-    {"season": 1988, "week": 20},
-    {"season": 1987, "week": 20},
-    {"season": 1986, "week": 20},
-    {"season": 1985, "week": 20},
-    {"season": 1984, "week": 20},
-    {"season": 1983, "week": 20},
-    {"season": 1982, "week": 20},
-    {"season": 1981, "week": 20},
-    {"season": 1980, "week": 20},
-    {"season": 1979, "week": 20},
-    {"season": 1978, "week": 20},
-    {"season": 1977, "week": 17},
-    {"season": 1976, "week": 17},
-    {"season": 1975, "week": 17},
-    {"season": 1974, "week": 17},
-    {"season": 1973, "week": 17},
-    {"season": 1972, "week": 17},
-    {"season": 1971, "week": 17},
-    {"season": 1970, "week": 17},
-    {"season": 1969, "week": 17},
-    {"season": 1968, "week": 17},
-    {"season": 1967, "week": 17},
-    {"season": 1966, "week": 17},
-]
+
+def _get_table_dates(df: pandas.DataFrame) -> list[datetime.datetime]:
+    dates_raw = df["Date/Season"]
+    dates = []
+    for date_raw in dates_raw:
+        dates.append(_parse_raw_date(date_raw))
+    return dates
+
+
+def _get_sbowls() -> list[datetime.datetime]:
+    text = requests.get(SBOWL_LINK).text
+    tables = pandas.read_html(io.StringIO(text))
+    past = tables[PAST_BOWLS_TABLE_INDEX]
+    future = tables[FUTURE_BOWLS_TABLE_INDEX]
+    past_dates = _get_table_dates(past)
+    future_dates = _get_table_dates(future)
+    return past_dates + future_dates
+
+
+def load_superbowl_dates(
+    cache_path: str = None, update_cache: bool = False
+) -> list[datetime.datetime]:
+    """
+    Load all past and scheduled future Super Bowl dates using Wikopedia.
+    If `cache_path` is given, load from the cache unless `update_cache = True` in which case data
+    is loaded from Wikopedia and used to update the cache.
+    """
+    if cache_path:
+        if update_cache:
+            dates = _get_sbowls()
+            dates_str = []
+            for i in range(0, len(dates)):
+                dates_str.append(datetime.datetime.strftime(dates[i], "%Y%m%d"))
+            with open(cache_path + cache.fname_superbowls() + ".json", "w") as file:
+                json.dump(dates_str, file)
+            return dates
+        else:
+            dates = []
+            path = cache_path + cache.fname_superbowls() + ".json"
+            if os.path.exists(path):
+                with open(path, "r") as file:
+                    dates = json.load(file)
+                for i in range(0, len(dates)):
+                    dates[i] = datetime.datetime.strptime(dates[i], "%Y%m%d")
+            return dates
+    else:
+        return _get_sbowls()
