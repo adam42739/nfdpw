@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nfldpw"
+version = "0.0.1"
+license = { file = "LICENSE.txt" }
+readme = "README.md"
+description="Wrapper for nfl_data_py"
+authors = [{ name = "Adam Lynch" }]
+dependencies = [
+     "nfl_data_py",
+]
+classifiers=[
+    "Programming Language :: Python :: 3",
+    "Licesnse :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.setools]
+packages = [
+    { include = "nfldpw" },
+    { include = "nfldpw.cache" },
+    { include = "nfldpw.pbp" },
+    { include = "nfldpw.schedules" },
+    { include = "nfldpw.rosters" },
+    { include = "nfldpw.players" }
+]
