@@ -72,5 +72,5 @@ def get(
                 dfs.append(df)
     else:
         for season in seasons:
-            dfs.append(nfl_data_py.import_seasonal_rosters([season]))
+            dfs.append(nfl_data_py.import_weekly_rosters([season]))
     return pandas.concat(dfs)
