@@ -25,5 +25,6 @@ packages = [
     { include = "nfldpw.pbp" },
     { include = "nfldpw.schedules" },
     { include = "nfldpw.rosters" },
-    { include = "nfldpw.players" }
+    { include = "nfldpw.players" },
+    { include = "nfldpw.drafts" }
 ]
