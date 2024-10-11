@@ -23,11 +23,13 @@ PLAYER_STATS_DICT = (
     "https://nflreadr.nflverse.com/articles/dictionary_player_stats.html"
 )
 PLAYERS_DICT = "https://nflreadr.nflverse.com/articles/dictionary_ff_playerids.html"
+DRAFTS_DICT = "https://nflreadr.nflverse.com/articles/dictionary_draft_picks.html"
 
 PBP_URLS = [PBP_DICT, NGS_DICT, PARTICIPATION_DICT]
 SCHEDULES_URLS = [SCHEDULES_DICT]
 ROSTERS_URLS = [ROSTERS_DICT, PLAYER_STATS_DICT]
 PLAYERS_URLS = [PLAYERS_DICT, ROSTERS_DICT, PLAYER_STATS_DICT]
+DRAFTS_URLS = [DRAFTS_DICT, PLAYERS_DICT, ROSTERS_DICT]
 
 
 def get_nflverse_dict(url: str) -> list[list[str]]:
@@ -337,4 +339,32 @@ def players():
     lines_write(lines, file_path)
 
 
-players()
+def drafts_col(
+    df: pandas.DataFrame, col: str, tables: list[list[list[str]]]
+) -> list[str]:
+    lines = []
+    lines.append("class " + format_col(col) + ":")
+    lines.append('\t"""')
+    lines.append("\t" + tables_find(tables, col))
+    lines += example_values(df, col)
+    lines.append('\t"""')
+    lines.append("")
+    lines.append('\theader = "' + col + '"')
+    lines += col_values(df, col)
+    return lines
+
+
+def drafts():
+    tables = []
+    for url in DRAFTS_URLS:
+        tables.append(get_nflverse_dict(url))
+    df = nfldpw.players.get(CACHE)
+    lines = []
+    for col in df.columns:
+        lines += drafts_col(df, col, tables)
+        lines.append("")
+    file_path = "nfldpw/drafts/cols.py"
+    lines_write(lines, file_path)
+
+
+drafts()
