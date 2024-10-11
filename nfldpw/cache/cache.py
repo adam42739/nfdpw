@@ -15,8 +15,13 @@ def fname_rosters(season: int) -> str:
     return "rosters-" + str(season)
 
 
+def fname_drafts(season: int) -> str:
+    return "drafts-" + str(season)
+
+
 def fname_players() -> str:
     return "players"
+
 
 def fname_superbowls() -> str:
     return "sbowls"
@@ -56,6 +61,18 @@ def load_pbp_mdata(cache_path: str) -> dict:
 
 def dump_pbp_mdata(mdata: dict, cache_path: str):
     dump_mdata(mdata, cache_path, "pbp")
+
+
+def load_drafts_mdata(cache_path: str) -> dict:
+    mdata = load_mdata(cache_path, "drafts")
+    new_mdata = {}
+    for season in mdata:
+        new_mdata[int(season)] = mdata[season]
+    return new_mdata
+
+
+def dump_drafts_mdata(mdata: dict, cache_path: str):
+    dump_mdata(mdata, cache_path, "drafts")
 
 
 def load_schedules_mdata(cache_path: str) -> dict:

@@ -32,6 +32,12 @@ Players data:
 >>> import nfldpw.players as players
 ```
 
+Drafts data:
+
+```python
+>>> import nfldpw.drafts as drafts
+```
+
 """
 
 from . import sbowls
