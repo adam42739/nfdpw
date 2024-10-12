@@ -11,6 +11,7 @@ description="Wrapper for nfl_data_py"
 authors = [{ name = "Adam Lynch" }]
 dependencies = [
      "nfl_data_py",
+     "requests",
 ]
 classifiers=[
     "Programming Language :: Python :: 3",
