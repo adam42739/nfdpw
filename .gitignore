@@ -10,3 +10,4 @@
 /build
 /nfldpw.egg-info
 /nfldpw/drafts/__pycache__
+/dist
