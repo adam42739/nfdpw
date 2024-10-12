@@ -31,7 +31,10 @@ def get(cache_path: str = None, refresh_cache: bool = False) -> pandas.DataFrame
         >>> players.get("path_to_cache/")
     """
     if cache_path:
-        if os.path.exists(cache_path + cache.fname_players() + ".parq"):
+        if (
+            os.path.exists(cache_path + cache.fname_players() + ".parq")
+            and refresh_cache == False
+        ):
             return cache.load(cache_path, cache.fname_players())
         else:
             df = nfl_data_py.import_players()
