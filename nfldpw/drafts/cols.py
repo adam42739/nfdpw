@@ -20,974 +20,926 @@ Some categorical columns provide encoded values.
 """
 
 
-class Status:
+class Season:
     """
-    Roster status: describes things like Active, Inactive, Injured Reserve, Practice Squad etc
+    Draft Year
 
     Example Values
     --------------
 
-    `"RET"`
+    `"2023"`
 
-    `"ACT"`
+    `"2023"`
 
-    `"DEV"`
+    `"2023"`
 
-    `"ACT"`
+    `"2023"`
 
-    `"RES"`
+    `"2023"`
 
     """
 
-    header = "status"
-
-    RET = "RET"
-    ACT = "ACT"
-    DEV = "DEV"
-    RES = "RES"
-    CUT = "CUT"
-    U01 = "U01"
-    UFA = "UFA"
-    TRD = "TRD"
-    INA = "INA"
-    TRC = "TRC"
-    TRT = "TRT"
-    RSN = "RSN"
-    PUP = "PUP"
-    NWT = "NWT"
-    EXE = "EXE"
-    RFA = "RFA"
-    E14 = "E14"
-    RSR = "RSR"
-    SUS = "SUS"
-    A02 = "A02"
-    A03 = "A03"
+    header = "season"
 
 
-class DisplayName:
+class Round:
     """
-    Player's displayed football name.
+    Draft round
 
     Example Values
     --------------
 
-    `"'Omar Ellison"`
+    `"1"`
 
-    `"A'Shawn Robinson"`
+    `"1"`
 
-    `"A.J. Arcuri"`
+    `"1"`
 
-    `"A.J. Barner"`
+    `"1"`
 
-    `"A.J. Bouye"`
+    `"1"`
 
     """
 
-    header = "display_name"
+    header = "round"
 
 
-class FirstName:
+class Pick:
     """
-    First name as per NFL.com
+    Draft overall pick
 
     Example Values
     --------------
 
-    `"'Omar"`
+    `"1"`
 
-    `"A'Shawn"`
+    `"2"`
 
-    `"A.J."`
+    `"3"`
 
-    `"A.J."`
+    `"4"`
 
-    `"Arlandus"`
+    `"5"`
 
     """
 
-    header = "first_name"
+    header = "pick"
 
 
-class LastName:
+class Team:
     """
-    Last name as per NFL.com
+    Draft team
 
     Example Values
     --------------
 
-    `"Ellison"`
+    `"CAR"`
 
-    `"Robinson"`
+    `"HOU"`
 
-    `"Arcuri"`
+    `"HOU"`
 
-    `"Barner"`
+    `"IND"`
 
-    `"Bouye"`
-
-    """
-
-    header = "last_name"
-
-
-class EsbId:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"ELL711319"`
-
-    `"ROB367960"`
-
-    `"ARC716900"`
-
-    `"BAR235889"`
-
-    `"BOU651714"`
+    `"SEA"`
 
     """
 
-    header = "esb_id"
+    header = "team"
 
 
 class GsisId:
     """
-    character
+    ID for joining with nflverse data
 
     Example Values
     --------------
 
-    `"00-0004866"`
+    `"00-0039150"`
 
-    `"00-0032889"`
+    `"00-0039163"`
 
-    `"00-0037845"`
+    `"00-0039108"`
 
-    `"00-0039793"`
+    `"00-0039164"`
 
-    `"00-0030228"`
+    `"00-0039169"`
 
     """
 
     header = "gsis_id"
 
 
-class BirthDate:
+class PfrPlayerId:
     """
-    Birthdate, as recorded by Sleeper API
+    ID from Pro Football Reference
 
     Example Values
     --------------
 
-    `"1971-10-08"`
+    `"YounBr01"`
 
-    `"1995-03-21"`
+    `"StroCJ00"`
 
-    `"1997-08-13"`
+    `"AndeWi01"`
 
-    `"2002-05-03"`
+    `"RichAn03"`
 
-    `"1991-08-16"`
+    `"WithDe00"`
 
     """
 
-    header = "birth_date"
+    header = "pfr_player_id"
 
 
-class CollegeName:
+class CfbPlayerId:
     """
-    Player's college.
+    ID from College Football Reference
 
     Example Values
     --------------
 
-    `"None"`
+    `"bryce-young-1"`
 
-    `"Alabama"`
+    `"cj-stroud-1"`
 
-    `"Michigan State"`
+    `"will-anderson-jr-1"`
 
-    `"Michigan"`
+    `"anthony-richardson-2"`
 
-    `"Central Florida"`
+    `"devon-witherspoon-1"`
 
     """
 
-    header = "college_name"
+    header = "cfb_player_id"
 
 
-class PositionGroup:
+class PfrPlayerName:
     """
-    No documentation available.
+    Player’s name as recorded by PFR
 
     Example Values
     --------------
 
-    `"WR"`
+    `"Bryce Young"`
 
-    `"DL"`
+    `"C.J. Stroud"`
 
-    `"OL"`
+    `"Will Anderson"`
 
-    `"TE"`
+    `"Anthony Richardson"`
+
+    `"Devon Witherspoon"`
+
+    """
+
+    header = "pfr_player_name"
+
+
+class Hof:
+    """
+    Whether player has been selected to the Pro Football Hall of Fame
+
+    Example Values
+    --------------
+
+    `"False"`
+
+    `"False"`
+
+    `"False"`
+
+    `"False"`
+
+    `"False"`
+
+    """
+
+    header = "hof"
+
+
+class Position:
+    """
+    Player position as recorded by PFR
+
+    Example Values
+    --------------
+
+    `"QB"`
+
+    `"QB"`
+
+    `"LB"`
+
+    `"QB"`
 
     `"DB"`
 
     """
 
-    header = "position_group"
-
-    WR = "WR"
-    DL = "DL"
-    OL = "OL"
-    TE = "TE"
-    DB = "DB"
-    SPEC = "SPEC"
-    RB = "RB"
-    LB = "LB"
-    QB = "QB"
-    HC = "HC"
-
-
-class Position:
-    """
-    character
-
-    Example Values
-    --------------
-
-    `"WR"`
-
-    `"DT"`
-
-    `"T"`
-
-    `"TE"`
-
-    `"CB"`
-
-    """
-
     header = "position"
 
-    WR = "WR"
-    DT = "DT"
-    T = "T"
-    TE = "TE"
-    CB = "CB"
-    G = "G"
-    P = "P"
-    DB = "DB"
-    RB = "RB"
-    LB = "LB"
-    DE = "DE"
     QB = "QB"
-    FS = "FS"
+    LB = "LB"
+    DB = "DB"
     OL = "OL"
-    SAF = "SAF"
     OLB = "OLB"
-    MLB = "MLB"
+    RB = "RB"
+    DL = "DL"
+    DE = "DE"
+    CB = "CB"
+    WR = "WR"
+    TE = "TE"
+    DT = "DT"
     C = "C"
-    OT = "OT"
-    LS = "LS"
-    FB = "FB"
-    K = "K"
-    SS = "SS"
-    ILB = "ILB"
-    OG = "OG"
+    T = "T"
     NT = "NT"
     S = "S"
+    K = "K"
+    G = "G"
+    P = "P"
+
+
+class Category:
+    """
+    Broader category of player positions
+
+    Example Values
+    --------------
+
+    `"QB"`
+
+    `"QB"`
+
+    `"LB"`
+
+    `"QB"`
+
+    `"DB"`
+
+    """
+
+    header = "category"
+
+    QB = "QB"
+    LB = "LB"
+    DB = "DB"
+    OL = "OL"
+    RB = "RB"
     DL = "DL"
-    HB = "HB"
-    KR = "KR"
-    PR = "PR"
-    HC = "HC"
+    WR = "WR"
+    TE = "TE"
+    K = "K"
+    P = "P"
 
 
-class JerseyNumber:
+class Side:
     """
-    Jersey number. Often useful for joins by name/team/jersey.
+    O for offense, D for defense, S for special teams
 
     Example Values
     --------------
 
-    `84.0`
+    `"O"`
 
-    `94.0`
+    `"O"`
 
-    `61.0`
+    `"D"`
 
-    `88.0`
+    `"O"`
 
-    `24.0`
+    `"D"`
 
     """
 
-    header = "jersey_number"
+    header = "side"
 
 
-class Height:
+class College:
     """
-    height in inches
+    College attended in final year
 
     Example Values
     --------------
 
-    `73.0`
+    `"Alabama"`
 
-    `76.0`
+    `"Ohio St."`
 
-    `79.0`
+    `"Alabama"`
 
-    `78.0`
+    `"Florida"`
 
-    `72.0`
+    `"Illinois"`
 
     """
 
-    header = "height"
+    header = "college"
+
+    ALABAMA = "Alabama"
+    OHIO_ST = "Ohio St."
+    FLORIDA = "Florida"
+    ILLINOIS = "Illinois"
+    TEXAS_TECH = "Texas Tech"
+    TEXAS = "Texas"
+    GEORGIA = "Georgia"
+    TENNESSEE = "Tennessee"
+    NORTHWESTERN = "Northwestern"
+    IOWA = "Iowa"
+    IOWA_ST = "Iowa St."
+    MISSISSIPPI_ST = "Mississippi St."
+    OREGON = "Oregon"
+    PITTSBURGH = "Pittsburgh"
+    TCU = "TCU"
+    BOSTON_COL = "Boston Col."
+    USC = "USC"
+    MARYLAND = "Maryland"
+    UTAH = "Utah"
+    MICHIGAN = "Michigan"
+    OKLAHOMA = "Oklahoma"
+    CLEMSON = "Clemson"
+    KANSAS_ST = "Kansas St."
+    PENN_ST = "Penn St."
+    KENTUCKY = "Kentucky"
+    NOTRE_DAME = "Notre Dame"
+    AUBURN = "Auburn"
+    SYRACUSE = "Syracuse"
+    MISSISSIPPI = "Mississippi"
+    LSU = "LSU"
+    OREGON_ST = "Oregon St."
+    WISCONSIN = "Wisconsin"
+    GEORGIA_TECH = "Georgia Tech"
+    NORTH_DAKOTA_ST = "North Dakota St."
+    MICHIGAN_ST = "Michigan St."
+    SOUTH_CAROLINA = "South Carolina"
+    UCLA = "UCLA"
+    SMU = "SMU"
+    MIAMI_FL = "Miami (FL)"
+    MINNESOTA = "Minnesota"
+    ARKANSAS = "Arkansas"
+    HOUSTON = "Houston"
+    SACRAMENTO_ST = "Sacramento St."
+    SOUTH_DAKOTA_ST = "South Dakota St."
+    NORTH_CAROLINA = "North Carolina"
+    TULANE = "Tulane"
+    LOUISVILLE = "Louisville"
+    TEXAS_AM = "Texas A&M"
+    WASHINGTON_ST = "Washington St."
+    WAKE_FOREST = "Wake Forest"
+    STANFORD = "Stanford"
+    WESTERN_KENTUCKY = "Western Kentucky"
+    BAYLOR = "Baylor"
+    CINCINNATI = "Cincinnati"
+    OLD_DOMINION = "Old Dominion"
+    BYU = "BYU"
+    TROY = "Troy"
+    NORTH_CAROLINA_ST = "North Carolina St."
+    EASTERN_MICHIGAN = "Eastern Michigan"
+    VIRGINIA_TECH = "Virginia Tech"
+    MISSOURI = "Missouri"
+    FRESNO_ST = "Fresno St."
+    SAN_JOSE_ST = "San Jose St."
+    OKLAHOMA_ST = "Oklahoma St."
+    PURDUE = "Purdue"
+    FLORIDA_ST = "Florida St."
+    WILLIAM__MARY = "William & Mary"
+    SOUTH_ALABAMA = "South Alabama"
+    CALIFORNIA = "California"
+    VIRGINIA = "Virginia"
+    APPALACHIAN_ST = "Appalachian St."
+    SF_AUSTIN = "S.F. Austin"
+    SOUTHERN_MISS = "Southern Miss"
+    BOWLING_GREEN = "Bowling Green"
+    BOISE_ST = "Boise St."
+    WESTERN_MICHIGAN = "Western Michigan"
+    NEBRASKA = "Nebraska"
+    NEW_MEXICO = "New Mexico"
+    RUTGERS = "Rutgers"
+    PRINCETON = "Princeton"
+    LIBERTY = "Liberty"
+    WAGNER = "Wagner"
+    WEST_VIRGINIA = "West Virginia"
+    KENNESAW_ST = "Kennesaw St."
+    ALABIRMINGHAM = "Ala-Birmingham"
+    WINGATE = "Wingate"
+    UT_MARTIN = "UT Martin"
+    ARIZONA_ST = "Arizona St."
+    LOUISIANA = "Louisiana"
+    CENTRAL_MICHIGAN = "Central Michigan"
+    NORTHERN_MICHIGAN = "Northern Michigan"
+    JACKSON_ST = "Jackson St."
+    BALL_ST = "Ball St."
+    CHARLOTTE = "Charlotte"
+    TOLEDO = "Toledo"
 
 
-class Weight:
+class Age:
     """
-    weight in pounds
+    Player age as of draft
 
     Example Values
     --------------
 
-    `200.0`
+    `22.0`
 
-    `330.0`
+    `21.0`
 
-    `320.0`
+    `22.0`
 
-    `251.0`
+    `21.0`
 
-    `191.0`
+    `22.0`
 
     """
 
-    header = "weight"
+    header = "age"
 
 
-class YearsOfExperience:
+class To:
     """
-    No documentation available.
+    Final season played in NFL
 
     Example Values
     --------------
 
-    `"2"`
+    `2024.0`
 
-    `"9"`
+    `2024.0`
 
-    `"2"`
+    `2024.0`
+
+    `2024.0`
+
+    `2024.0`
+
+    """
+
+    header = "to"
+
+
+class Allpro:
+    """
+    Number of AP First Team All-Pro selections as recorded by PFR
+
+    Example Values
+    --------------
 
     `"0"`
 
-    `"8"`
+    `"0"`
+
+    `"0"`
+
+    `"0"`
+
+    `"0"`
 
     """
 
-    header = "years_of_experience"
+    header = "allpro"
 
 
-class TeamAbbr:
+class Probowls:
     """
-    No documentation available.
+    Number of Pro Bowls
 
     Example Values
     --------------
 
-    `"LAC"`
+    `"0"`
 
-    `"CAR"`
+    `"1"`
 
-    `"LA"`
+    `"1"`
 
-    `"SEA"`
+    `"0"`
 
-    `"CAR"`
+    `"1"`
 
     """
 
-    header = "team_abbr"
+    header = "probowls"
+
+    TRUE = 1
+    FALSE = 0
 
 
-class TeamSeq:
+class SeasonsStarted:
     """
-    No documentation available.
+    Number of seasons recorded as primary starter for position
 
     Example Values
     --------------
+
+    `"1"`
+
+    `"1"`
+
+    `"1"`
+
+    `"0"`
+
+    `"1"`
+
+    """
+
+    header = "seasons_started"
+
+    TRUE = 1
+    FALSE = 0
+
+
+class WAv:
+    """
+    Weighted Approximate Value
+
+    Example Values
+    --------------
+
+    `6.0`
+
+    `14.0`
+
+    `10.0`
+
+    `3.0`
+
+    `6.0`
+
+    """
+
+    header = "w_av"
+
+
+class CarAv:
+    """
+    Career Approximate Value
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    `nan`
+
+    """
+
+    header = "car_av"
+
+
+class DrAv:
+    """
+    Draft Approximate Value
+
+    Example Values
+    --------------
+
+    `6.0`
+
+    `14.0`
+
+    `10.0`
+
+    `3.0`
+
+    `6.0`
+
+    """
+
+    header = "dr_av"
+
+
+class Games:
+    """
+    Games played in career
+
+    Example Values
+    --------------
+
+    `17.0`
+
+    `16.0`
+
+    `16.0`
+
+    `5.0`
+
+    `15.0`
+
+    """
+
+    header = "games"
+
+
+class PassCompletions:
+    """
+    Career pass completions
+
+    Example Values
+    --------------
+
+    `328.0`
+
+    `343.0`
+
+    `0.0`
+
+    `59.0`
+
+    `0.0`
+
+    """
+
+    header = "pass_completions"
+
+
+class PassAttempts:
+    """
+    Career pass attempts
+
+    Example Values
+    --------------
+
+    `557.0`
+
+    `531.0`
+
+    `0.0`
+
+    `103.0`
+
+    `0.0`
+
+    """
+
+    header = "pass_attempts"
+
+
+class PassYards:
+    """
+    Career pass yards thrown
+
+    Example Values
+    --------------
+
+    `3038.0`
+
+    `4342.0`
+
+    `0.0`
+
+    `789.0`
+
+    `0.0`
+
+    """
+
+    header = "pass_yards"
+
+
+class PassTds:
+    """
+    Career pass touchdowns thrown
+
+    Example Values
+    --------------
+
+    `11.0`
+
+    `25.0`
+
+    `0.0`
+
+    `5.0`
+
+    `0.0`
+
+    """
+
+    header = "pass_tds"
+
+
+class PassInts:
+    """
+    Career pass interceptions thrown
+
+    Example Values
+    --------------
+
+    `12.0`
+
+    `5.0`
+
+    `0.0`
+
+    `2.0`
+
+    `0.0`
+
+    """
+
+    header = "pass_ints"
+
+
+class RushAtts:
+    """
+    Career rushing attempts
+
+    Example Values
+    --------------
+
+    `43.0`
+
+    `43.0`
+
+    `0.0`
+
+    `31.0`
+
+    `0.0`
+
+    """
+
+    header = "rush_atts"
+
+
+class RushYards:
+    """
+    Career rushing yards
+
+    Example Values
+    --------------
+
+    `265.0`
+
+    `180.0`
+
+    `0.0`
+
+    `192.0`
+
+    `0.0`
+
+    """
+
+    header = "rush_yards"
+
+
+class RushTds:
+    """
+    Career rushing touchdowns
+
+    Example Values
+    --------------
+
+    `1.0`
+
+    `3.0`
+
+    `0.0`
+
+    `5.0`
+
+    `0.0`
+
+    """
+
+    header = "rush_tds"
+
+
+class Receptions:
+    """
+    Career receptions
+
+    Example Values
+    --------------
+
+    `0.0`
+
+    `1.0`
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    """
+
+    header = "receptions"
+
+
+class RecYards:
+    """
+    Career receiving yards
+
+    Example Values
+    --------------
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    """
+
+    header = "rec_yards"
+
+
+class RecTds:
+    """
+    Career receiving touchdowns
+
+    Example Values
+    --------------
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    `0.0`
+
+    """
+
+    header = "rec_tds"
+
+
+class DefSoloTackles:
+    """
+    Career solo tackles
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `nan`
+
+    `31.0`
+
+    `nan`
+
+    `61.0`
+
+    """
+
+    header = "def_solo_tackles"
+
+
+class DefInts:
+    """
+    Career interceptions
+
+    Example Values
+    --------------
+
+    `nan`
+
+    `nan`
+
+    `nan`
 
     `nan`
 
     `1.0`
 
-    `nan`
-
-    `nan`
-
-    `1.0`
-
     """
 
-    header = "team_seq"
+    header = "def_ints"
 
 
-class CurrentTeamId:
+class DefSacks:
     """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"4400"`
-
-    `"0750"`
-
-    `"2510"`
-
-    `"4600"`
-
-    `"0750"`
-
-    """
-
-    header = "current_team_id"
-
-
-class FootballName:
-    """
-    Player's displayed football name.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"A'Shawn"`
-
-    `"A.J."`
-
-    `"A.J."`
-
-    `"A.J."`
-
-    """
-
-    header = "football_name"
-
-
-class EntryYear:
-    """
-    Player's first year rostered on an NFL team.
+    Career sacks
 
     Example Values
     --------------
 
     `nan`
 
-    `2016.0`
+    `nan`
 
-    `2022.0`
-
-    `2024.0`
-
-    `2013.0`
-
-    """
-
-    header = "entry_year"
-
-
-class RookieYear:
-    """
-    Player's rookie year.
-
-    Example Values
-    --------------
+    `7.0`
 
     `nan`
 
-    `2016.0`
-
-    `2022.0`
-
-    `2024.0`
-
-    `2013.0`
+    `3.0`
 
     """
 
-    header = "rookie_year"
-
-
-class DraftClub:
-    """
-    NFL team that drafted the player (if applicable).
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"DET"`
-
-    `"LA"`
-
-    `"SEA"`
-
-    `"None"`
-
-    """
-
-    header = "draft_club"
-
-
-class DraftNumber:
-    """
-    Player's draft number.
-
-    Example Values
-    --------------
-
-    `nan`
-
-    `46.0`
-
-    `261.0`
-
-    `121.0`
-
-    `nan`
-
-    """
-
-    header = "draft_number"
-
-
-class CollegeConference:
-    """
-    Player's college conference.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"Southeastern Conference"`
-
-    `"Big Ten Conference"`
-
-    `"Big Ten Conference"`
-
-    `"American Athletic Conference"`
-
-    """
-
-    header = "college_conference"
-
-    SOUTHEASTERN_CONFERENCE = "Southeastern Conference"
-    BIG_TEN_CONFERENCE = "Big Ten Conference"
-    AMERICAN_ATHLETIC_CONFERENCE = "American Athletic Conference"
-    ATLANTIC_COAST_CONFERENCE = "Atlantic Coast Conference"
-    BIG_TWELVE_CONFERENCE = "Big Twelve Conference"
-    SUN_BELT_CONFERENCE = "Sun Belt Conference"
-    MIDAMERICAN_CONFERENCE = "Mid-American Conference"
-    MOUNTAIN_WEST_CONFERENCE = "Mountain West Conference"
-    PACIFIC_TWELVE_CONFERENCE = "Pacific Twelve Conference"
-    OHIO_VALLEY_CONFERENCE = "Ohio Valley Conference"
-    INDEPENDENT = "Independent"
-    CONFERENCE_USA = "Conference USA"
-    COLONIAL_ATHLETIC_ASSOCIATION = "Colonial Athletic Association"
-    SOUTHERN_CALIFORNIA_INTERCOLLEGIATE_ATHLETIC_CONF = (
-        "Southern California Intercollegiate Athletic Conf."
-    )
-    PIONEER_FOOTBALL_LEAGUE = "Pioneer Football League"
-    BIG_SKY_CONFERENCE = "Big Sky Conference"
-    PACIFIC_TEN_CONFERENCE = "Pacific Ten Conference"
-    IVY_LEAGUE = "Ivy League"
-    PATRIOT_LEAGUE = "Patriot League"
-    GULF_SOUTH_CONFERENCE = "Gulf South Conference"
-    GREAT_NORTHWEST_ATHLETIC_CONFERENCE = "Great Northwest Athletic Conference"
-    BIG_EAST = "Big East"
-    MISSOURI_VALLEY_FOOTBALL_CONFERENCE = "Missouri Valley Football Conference"
-    GREAT_LAKES_INTERCOLLEGIATE_ATHLETIC_CONFERENCE = (
-        "Great Lakes Intercollegiate Athletic Conference"
-    )
-    NORTHERN_SUN_INTERCOLLEGIATE_CONFERENCE = "Northern Sun Intercollegiate Conference"
-    NO_COLLEGE = "NO COLLEGE"
-    SOUTHERN_CONFERENCE = "Southern Conference"
-    CANADA_WEST_UNIVERSITIES_ATHLETIC_ASSOCIATION = (
-        "Canada West Universities Athletic Association"
-    )
-    PENNSYLVANIA_STATE_ATHLETIC_CONFERENCE = "Pennsylvania State Athletic Conference"
-    ROCKY_MOUNTAIN_ATHLETIC_CONFERENCE = "Rocky Mountain Athletic Conference"
-    FRONTIER_CONFERENCE = "Frontier Conference"
-    MIDEASTERN_ATHLETIC_CONFERENCE = "Mid-Eastern Athletic Conference"
-    SOUTHLAND_CONFERENCE = "Southland Conference"
-    MIDAMERICA_INTERCOLLEGIATE_ATHLETIC_ASSOCIATION = (
-        "Mid-America Intercollegiate Athletic Association"
-    )
-    BIG_SOUTH_CONFERENCE = "Big South Conference"
-    MIDWEST_CONFERENCE = "Midwest Conference"
-    LIBERTY_LEAGUE = "Liberty League"
-    LONE_STAR_CONFERENCE = "Lone Star Conference"
-    SOUTHERN_INTERCOLLEGIATE_ATHLETIC_CONFERENCE = (
-        "Southern Intercollegiate Athletic Conference"
-    )
-    UNITED_ATHLETIC_CONFERENCE = "United Athletic Conference"
-    HEART_OF_AMERICA_ATHLETIC_CONFERENCE = "Heart of America Athletic Conference"
-    OHIO_ATHLETIC_CONFERENCE = "Ohio Athletic Conference"
-    SOUTHWESTERN_ATHLETIC_CONFERENCE = "Southwestern Athletic Conference"
-    NORTHEAST_CONFERENCE = "Northeast Conference"
-    QUEBEC_STUDENT_SPORTS_FOUNDATION = "Quebec Student Sports Foundation"
-    GREAT_AMERICAN_CONFERENCE = "Great American Conference"
-    GREAT_LAKES_VALLEY_CONFERENCE = "Great Lakes Valley Conference"
-    MINNESOTA_INTERCOLLEGIATE_ATHLETIC_CONFERENCE = (
-        "Minnesota Intercollegiate Athletic Conference"
-    )
-    WISCONSIN_INTERCOLLEGIATE_ATHLETIC_CONFERENCE = (
-        "Wisconsin Intercollegiate Athletic Conference"
-    )
-    WESTERN_ATHLETIC_CONFERENCE = "Western Athletic Conference"
-    MOUNTAIN_EAST_CONFERENCE = "Mountain East Conference"
-    AMERICAN_SOUTHWEST_CONFERENCE = "American Southwest Conference"
-    SOUTH_ATLANTIC_CONFERENCE = "South Atlantic Conference"
-    MIDSTATES_FOOTBALL_ASSOCIATION = "Mid-States Football Association"
-    PRESIDENTS_ATHLETIC_CONFERENCE = "Presidents Athletic Conference"
-    CENTRAL_INTERCOLLEGIATE_ATHLETIC_ASSOCIATION = (
-        "Central Intercollegiate Athletic Association"
-    )
-    MIDSOUTH_CONFERENCE = "Mid-South Conference"
-    NO_FOOTBALL = "NO FOOTBALL"
-    EMPIRE_8_CONFERENCE = "Empire 8 Conference"
-    SOUTHERN_ATHLETIC_ASSOCIATION = "Southern Athletic Association"
-    WESTERN_STATES_FOOTBALL_CONFERENCE = "Western States Football Conference"
-    MISSISSIPPI_CC_ATHLETIC_ASSOCIATION = "Mississippi CC Athletic Association"
-    NORTHEAST10_CONFERENCE = "Northeast-10 Conference"
-    OLD_DOMINION_ATHLETIC_CONFERENCE = "Old Dominion Athletic Conference"
-    HEARTLAND_COLLEGIATE_ATHLETIC_CONFERENCE = (
-        "Heartland Collegiate Athletic Conference"
-    )
-    ONTARIO_UNIVERSITIES_ATHLETIC_ASSOCIATION = (
-        "Ontario Universities Athletic Association"
-    )
-    NORTH_STAR_ATHLETIC_ASSOCIATION = "North Star Athletic Association"
-    KANSAS_COLLEGIATE_ATHLETIC_CONFERENCE = "Kansas Collegiate Athletic Conference"
-    KANSAS_JAYHAWK_CONFERENCE = "Kansas Jayhawk Conference"
-    ATLANTIC_10 = "Atlantic 10"
-    NEW_JERSEY_ATHLETIC_CONFERENCE = "New Jersey Athletic Conference"
-    MASSACHUSETTS_STATE_COLLEGE_ATHLETIC_CONFERENCE = (
-        "Massachusetts State College Athletic Conference"
-    )
-    BIG_SOUTH__OHIO_VALLEY_CONFERENCE = "Big South - Ohio Valley Conference"
-    THE_SUN_CONFERENCE = "The Sun Conference"
-    NORTHERN_ATHLETICS_CONFERENCE = "Northern Athletics Conference"
-    IOWA_INTERCOLLEGIATE_ATHLETIC_CONFERENCE = (
-        "Iowa Intercollegiate Athletic Conference"
-    )
-    UPPER_MIDWEST_ATHLETIC_CONFERENCE = "Upper Midwest Athletic Conference"
-    MIDDLE_ATLANTIC_CONFERENCE = "Middle Atlantic Conference"
-    ATLANTIC_SUN_CONFERENCE = "Atlantic Sun Conference"
-    GREAT_WEST_FOOTBALL_CONFERENCE = "Great West Football Conference"
-    COLLEGE_CONFERENCE_OF_ILLINOIS_AND_WISCONSIN = (
-        "College Conference of Illinois and Wisconsin"
-    )
-
-
-class StatusDescriptionAbbr:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"A01"`
-
-    `"P01"`
-
-    `"A01"`
-
-    `"R01"`
-
-    """
-
-    header = "status_description_abbr"
-
-    A01 = "A01"
-    P01 = "P01"
-    R01 = "R01"
-    U01 = "U01"
-    P07 = "P07"
-    W03 = "W03"
-    R02 = "R02"
-    P03 = "P03"
-    R34 = "R34"
-    R04 = "R04"
-    P06 = "P06"
-    P02 = "P02"
-    R36 = "R36"
-    R48 = "R48"
-    R40 = "R40"
-    I01 = "I01"
-    R42 = "R42"
-    R06 = "R06"
-    R23 = "R23"
-    R41 = "R41"
-    R62 = "R62"
-    R43 = "R43"
-    R27 = "R27"
-    A02 = "A02"
-    E08 = "E08"
-    R03 = "R03"
-    E02 = "E02"
-    R05 = "R05"
-    R47 = "R47"
-    E14 = "E14"
-    A03 = "A03"
-    P09 = "P09"
-    R37 = "R37"
-    P12 = "P12"
-    R59 = "R59"
-    F12 = "F12"
-    R49 = "R49"
-    W06 = "W06"
-    E01 = "E01"
-    A06 = "A06"
-
-
-class StatusShortDescription:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"Active"`
-
-    `"Practice Squad"`
-
-    `"Active"`
-
-    `"R/Injured"`
-
-    """
-
-    header = "status_short_description"
-
-    ACTIVE = "Active"
-    PRACTICE_SQUAD = "Practice Squad"
-    RINJURED = "R/Injured"
-    RUFA = "R/UFA"
-    PS_VET = "PS; Vet"
-    WAIVERSNO_REC = "Waivers/No Rec."
-    RRETIRED = "R/Retired"
-    INTL_PSQUAD = "Int'l PSquad"
-    RIWI_NOT_90 = "R/I-W/I; Not 90"
-    RPUP = "R/PUP"
-    PS_EXC = "PS; Exc"
-    PRAC_SQ_INJ = "Prac Sq.; Inj"
-    RI_NOT_90 = "R/I; NOT 90"
-    RINJURED_DFR = "R/Injured; DFR"
-    RSUSP_1YR = "R/Susp < 1Yr"
-    INACTIVE = "Inactive"
-    RNFIN_NOT_90 = "R/NFIN; Not 90"
-    RLEFT_SQUAD = "R/Left Squad"
-    RESERVEFUTURE = "Reserve/Future"
-    RPUP_NOT_90 = "R/PUP; Not 90"
-    ROPTOUT = "R/OptOut"
-    RNFIL_NOT_90 = "R/NFIL; Not 90"
-    RNFIL = "R/NFIL"
-    ACTIVEPUP = "Active/PUP"
-    EXLS_NOT_90 = "Ex/LS; Not 90"
-    RDNR = "R/DNR"
-    RI_VV_NOT_90 = "R/I; VV; NOT 90"
-    EXCOMM_PERM = "Ex/Comm. Perm."
-    RNFIN = "R/NFIN"
-    RNFIN_DFR = "R/NFIN; DFR"
-    EXINTERNAT = "Ex/Internat"
-    ACTIVENFIN = "Active/NFIN"
-    PS_COVID19 = "PS; COVID19"
-    RPUPWFP_NO90 = "R/PUP-W/FP No90"
-    PSVET_PRO = "PS/Vet Pro"
-    RCOVID19 = "R/COVID-19"
-    FA_SUSP1_YR = "FA Susp-1 Yr"
-    RNFIL_DFR = "R/NFIL; DFR"
-    WI_PRIOR_53 = "W/I; Prior 53"
-    EXLEFT_SQUAD = "Ex/Left Squad"
-    ACTIVENFIL = "Active/NFIL"
-
-
-class GsisItId:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `nan`
-
-    `43335.0`
-
-    `54726.0`
-
-    `57242.0`
-
-    `40688.0`
-
-    """
-
-    header = "gsis_it_id"
-
-
-class ShortName:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"A.Robinson"`
-
-    `"A.Arcuri"`
-
-    `"A.Barner"`
-
-    `"A.Bouye"`
-
-    """
-
-    header = "short_name"
-
-
-class SmartId:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"3200454c-4c71-1319-728e-d49d3d236f8f"`
-
-    `"3200524f-4236-7960-bf20-bc060ac0f49c"`
-
-    `"32004152-4371-6900-5185-8cdd66b2ad11"`
-
-    `"32004241-5223-5889-95d9-0ba3aeeb36ed"`
-
-    `"3200424f-5565-1714-cb38-07c822111a12"`
-
-    """
-
-    header = "smart_id"
-
-
-class Headshot:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"https://static.www.nfl.com/image/private/f_auto,q_auto/league/qgiwxchd1lmgszfunys8"`
-
-    `"None"`
-
-    `"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/msnzbeyjoemcas9dm8vt"`
-
-    `"https://static.www.nfl.com/image/private/f_auto,q_auto/league/cpgi2hbhnmvs1oczkzas"`
-
-    """
-
-    header = "headshot"
-
-
-class Suffix:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"None"`
-
-    `"None"`
-
-    `"None"`
-
-    `"None"`
-
-    """
-
-    header = "suffix"
-
-    III = "III"
-    JR = "Jr."
-    II = "II"
-    COOK = "Cook"
-    IV = "IV"
-    V = "V"
-    SINDRE = "Sindre"
-    JR = "Jr"
-    ELLIS = "Ellis"
-    WILLIAMS = "Williams"
-    HALL = "Hall"
-
-
-class UniformNumber:
-    """
-    No documentation available.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"94"`
-
-    `"61"`
-
-    `"88"`
-
-    `"24"`
-
-    """
-
-    header = "uniform_number"
-
-
-class DraftRound:
-    """
-    Round of draft.
-
-    Example Values
-    --------------
-
-    `"None"`
-
-    `"None"`
-
-    `"None"`
-
-    `"None"`
-
-    `"None"`
-
-    """
-
-    header = "draft_round"
+    header = "def_sacks"

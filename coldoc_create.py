@@ -1,6 +1,7 @@
 import nfldpw
 import requests
 import pandas
+import nfldpw.drafts
 import nfldpw.pbp
 import nfldpw.players
 import nfldpw.rosters
@@ -42,7 +43,11 @@ def get_nflverse_dict(url: str) -> list[list[str]]:
         table = df.T.values.tolist()
     else:
         table = eval(text[ind1 : ind2 + 2])
-    if table[1][0] == "character" or table[1][0] == "numeric":
+    if (
+        table[1][0] == "character"
+        or table[1][0] == "numeric"
+        or table[1][0] == "integer"
+    ):
         t1 = table[1]
         table[1] = table[2]
         table[2] = t1
@@ -181,6 +186,8 @@ def col_values(df: pandas.DataFrame, col: str) -> list[str]:
                 for value in values:
                     string = value.replace("2_MAN", "MAN_2")
                     string = string.replace("&amp;", "AND")
+                    string = string.replace("(", "")
+                    string = string.replace(")", "")
                     string = string.replace(";", "")
                     string = string.replace(" < ", "_")
                     string = string.replace(" ", "_")
@@ -358,7 +365,7 @@ def drafts():
     tables = []
     for url in DRAFTS_URLS:
         tables.append(get_nflverse_dict(url))
-    df = nfldpw.players.get(CACHE)
+    df = nfldpw.drafts.get([2023], CACHE)
     lines = []
     for col in df.columns:
         lines += drafts_col(df, col, tables)
