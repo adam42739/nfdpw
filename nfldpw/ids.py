@@ -94,3 +94,17 @@ def get_mapping(cache_path: str = None, refresh: bool = False) -> pandas.DataFra
             return df
     else:
         return nfl_data_py.import_ids()
+
+
+def id_map_lookup(
+    id_map: pandas.DataFrame, ids: dict[int, str]
+) -> pandas.Series | None:
+    for id_key_index in ids:
+        id_key = LIST[id_key_index]
+        id = ids[id_key_index]
+        if id_key[MODULE_DEFAULT] in id_map.columns:
+            mask = id_map[id_key[MODULE_DEFAULT]] == id
+            df = id_map[mask]
+            if not df.empty:
+                return df.iloc[0]
+    return None
