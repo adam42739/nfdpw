@@ -107,4 +107,4 @@ def id_map_lookup(
             df = id_map[mask]
             if not df.empty:
                 return df.iloc[0]
-    return None
+    return pandas.Series()
