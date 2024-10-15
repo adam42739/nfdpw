@@ -149,7 +149,7 @@ class PfrPlayerId:
 
     """
 
-    header = "pfr_player_id"
+    header = "pfr_id"
 
 
 class CfbPlayerId:
@@ -171,7 +171,7 @@ class CfbPlayerId:
 
     """
 
-    header = "cfb_player_id"
+    header = "cfbref_id"
 
 
 class PfrPlayerName:

@@ -1,6 +1,34 @@
 import nfl_data_py
+from . import cols
 import pandas
 from .. import cache
+
+
+EXTRA_DRAFT_ID = "extra_ID"
+
+
+def _create_extra_ID(df: pandas.DataFrame) -> pandas.DataFrame:
+    picklesseq32 = df[cols.Pick.header] <= 32
+    pick_num = (picklesseq32 * df[cols.Round.header] * df[cols.Pick.header]) + (
+        (~picklesseq32) * df[cols.Pick.header]
+    )
+    df[EXTRA_DRAFT_ID] = (
+        df[cols.Team.header]
+        + (pick_num).apply(str)
+        + df[cols.PfrPlayerName.header]
+        .str.replace(" ", "-", regex=False)
+        .str.replace(".", "_", regex=False)
+    )
+    return df
+
+
+def _draft_cols_rename(df: pandas.DataFrame) -> pandas.DataFrame:
+    RENAME_MAP = {
+        "cfb_player_id": "cfbref_id",
+        "pfr_player_id": "pfr_id",
+    }
+    df = df.rename(RENAME_MAP, axis="columns")
+    return df
 
 
 def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
@@ -50,4 +78,7 @@ def get(seasons: list[int], cache_path: str = None) -> pandas.DataFrame:
     else:
         for season in seasons:
             dfs.append(nfl_data_py.import_draft_picks([season]))
-    return pandas.concat(dfs)
+    df = pandas.concat(dfs)
+    df = _draft_cols_rename(df)
+    df = _create_extra_ID(df)
+    return df
