@@ -18,6 +18,7 @@ nfldpw
 |    |__ cols
 |__ players
 |    |__ cols
+|    |__ ids
 |__ rosters
 |    |__ cols
 |__ schedules
