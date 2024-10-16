@@ -3,7 +3,9 @@ import os
 import nfl_data_py
 from .. import cache
 from .. import players
+from .. import drafts
 from ..drafts import EXTRA_DRAFT_ID
+import tqdm
 
 YAHOO = "yahoo_id"
 ESB = "esb_id"
@@ -237,6 +239,34 @@ class IDKeeper:
         self._update_mapping(id_map)
         self._update_mapping(player_map)
         self._update_mapping(id_map)
+
+    def add_drafts(self, seasons: list[int]):
+        """
+        Add all drafted players from the given seasons to the `IDKeeper`, update the mapping, and save the `IDKeeper`
+        to the cache directory.
+
+        Parameters
+        ----------
+
+        seasons : list[int]
+            List of seasons to get draft data for
+        """
+        drafts_df = drafts.get(seasons, self.cache_path)
+        for index, draft_series in tqdm.tqdm(
+            iterable=drafts_df.iterrows(),
+            desc="Updating the IDKeeper with drafted players data",
+            total=len(drafts_df),
+        ):
+            ids = draft_series[
+                [
+                    drafts.cols.CfbPlayerId.header,
+                    drafts.cols.PfrPlayerId.header,
+                    "extra_ID",
+                ]
+            ].to_dict()
+            self.append(ids)
+        self.update_mapping()
+        self.dump()
 
     def __len__(self) -> int:
         return len(self.df)
