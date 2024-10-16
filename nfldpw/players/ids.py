@@ -198,11 +198,15 @@ class IDKeeper:
                 row[id] = id_dict[id]
             self.df.loc[len(self)] = row
 
-    def _update_mapping(self, id_map: pandas.DataFrame):
+    def _update_mapping(self, id_map: pandas.DataFrame, part_i: int, part_total: int):
         """
         Updates a single mapping given by `id_map` as opposed to all the mappings which is performed by `IDKeeper.update_mapping()`
         """
-        for index in self.df.index:
+        for index in tqdm.tqdm(
+            iterable=self.df.index,
+            desc="Updating map part: " + str(part_i) + " of " + str(part_total),
+            total=len(self.df),
+        ):
             id_dict = self.df.iloc[index].dropna().to_dict()
             series = locate_map(id_map, id_dict)
             if not series.empty:
@@ -236,9 +240,9 @@ class IDKeeper:
                 EXTRA_DRAFT_ID,
             ]
         ]
-        self._update_mapping(id_map)
-        self._update_mapping(player_map)
-        self._update_mapping(id_map)
+        self._update_mapping(id_map, 1, 3)
+        self._update_mapping(player_map, 2, 3)
+        self._update_mapping(id_map, 3, 3)
 
     def add_drafts(self, seasons: list[int]):
         """
