@@ -272,5 +272,29 @@ class IDKeeper:
         self.update_mapping()
         self.dump()
 
+    def add_players(self, refresh_players: bool = False):
+        """
+        Add all players from `players.get()` to the `IDKeeper`, update the mapping, and save the `IDKeeper`
+        to the cache directory. If `refreash_players` is `True`, `players.get()` will refresh the player data from the web source,
+        otherwise it will use data stored in the cache if it exists.
+        """
+        players_df = players.get(self.cache_path, refresh_players)
+        for index, player_series in tqdm.tqdm(
+            iterable=players_df.iterrows(),
+            desc="Updating the IDKeeper with players data",
+            total=len(players_df),
+        ):
+            ids = player_series[
+                [
+                    players.cols.EsbId.header,
+                    players.cols.GsisId.header,
+                    players.cols.SmartId.header,
+                    "extra_ID",
+                ]
+            ].to_dict()
+            self.append(ids)
+        self.update_mapping()
+        self.dump()
+
     def __len__(self) -> int:
         return len(self.df)
