@@ -8,6 +8,44 @@ EXTRA_DRAFT_ID = "extra_ID"
 
 
 def _create_extra_ID(df: pandas.DataFrame) -> pandas.DataFrame:
+    """
+    Create the extra draft ID.
+
+    -----
+    Style
+    -----
+
+    id = [Draft Team][Draft Number Ovr (i.e. `round * pick`)][Full Name]
+
+    Notes
+    -----
+
+    * In [Full Name], "." is replaced by "_" and " " is replaced by "-".
+
+    * Depending on when a player was drafted, their Draft ID may show up with outdated team abbreviations (e.i. "STL", "SD", etc.).
+    However, this should **_not_** be cause for concern as most sources where Draft IDs are generated from are consistent with the outdated
+    team abbreviations.
+
+    -------
+    Example
+    -------
+
+    E.J. Henderson: Drafted 40th overall by the Minnesoda Vikings
+
+    `MIN40E_J_-Henderson`
+
+    ------------
+    Known Issues
+    ------------
+
+    * Some sources might stylize E.J. Henderson's name as "Eric Henderson".
+    In this case the auto-generated draft ID would be created as `MIN40Eric-Henderson` and will not
+    match when compared against `MIN40E_J_-Henderson`.
+
+    * Additionally, as it might be apparent, Draft ID is not 100% unique, but rather an auto-generated ID used to assist
+    in matching players between different data sources. Inappropriate matches may occur, although they should be very rare.
+
+    """
     picklesseq32 = df[cols.Pick.header] <= 32
     pick_num = (picklesseq32 * df[cols.Round.header] * df[cols.Pick.header]) + (
         (~picklesseq32) * df[cols.Pick.header]
@@ -23,6 +61,16 @@ def _create_extra_ID(df: pandas.DataFrame) -> pandas.DataFrame:
 
 
 def _draft_cols_rename(df: pandas.DataFrame) -> pandas.DataFrame:
+    """
+    Rename draft columns for consistency.
+
+    Requiring Rename
+    ----------------
+
+    `"cfb_player_id" -> "cfbref_id"`
+
+    `"pfr_player_id" -> "pfr_id"`
+    """
     RENAME_MAP = {
         "cfb_player_id": "cfbref_id",
         "pfr_player_id": "pfr_id",
