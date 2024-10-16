@@ -88,6 +88,26 @@ def get_mapping(cache_path: str = None, refresh: bool = False) -> pandas.DataFra
 
 
 def locate_map(id_map: pandas.DataFrame, id_dict: dict[str, str]) -> pandas.Series:
+    """
+    Locates the row in `id_map` matching the player IDs given in `id_dict`. All IDs present
+    in both `id_map` and `id_dict` must be equal to be considered "matching". If no match is found,
+    and empty `pandas.Series(dtype="string")` is returned.
+
+    Parameters
+    ----------
+
+    id_map : pandas.DataFrame
+        Table of IDs where each row is a player and column a type of ID. `None`/`NaN` may exist.
+
+    id_dict : dict[str, str]
+        Dictionary of IDs for a single player to match with the `id_map`. Key = ID type; Value = ID
+
+    Returns
+    -------
+
+    out : pandas.Series
+        Matching player series from the `id_map` or an empty series if no match was found.
+    """
     for id in id_dict:
         if id in id_map.columns:
             mask = id_map[id] == id_dict[id]
@@ -103,6 +123,11 @@ def locate_map(id_map: pandas.DataFrame, id_dict: dict[str, str]) -> pandas.Seri
 
 
 class IDKeeper:
+    """
+    Class for keeping track of player IDs. An instance of `IDKeeper` is associated with a single cache directory which
+    is set by the `IDKeeper.load()` method.
+    """
+
     def __init__(self):
         pass
 
@@ -110,6 +135,15 @@ class IDKeeper:
         return cache_path + cache.fname_players() + "-idkeeper.csv"
 
     def load(self, cache_path: str):
+        """
+        Load the `IDKeeper` from the given cache directory or create one if it does not exist.
+
+        Parameters
+        ----------
+
+        cache_path : str
+            Cache directory location
+        """
         self.cache_path = cache_path
         path = self._path(cache_path)
         self.df = pandas.DataFrame({id_header: [] for id_header in LIST})
@@ -117,16 +151,45 @@ class IDKeeper:
             self.df = pandas.concat([self.df, pandas.read_csv(path, index_col=0)])
 
     def dump(self):
+        """
+        Save the `IDKeeper` to associated cach direcotry.
+        """
         path = self._path(self.cache_path)
         self.df.to_csv(path, index=True)
 
-    def exists(self, id_dict: dict[str, str]):
+    def exists(self, id_dict: dict[str, str]) -> bool:
+        """
+        Check if the player assocated with the IDs in `id_dict` exists in the `IDKeeper`. Only
+        one id from `id_dict` must exist in the `IDKeeper` to be considered existing.
+
+        Parameters
+        ----------
+
+        id_dict : dict[str, str]
+            IDs to check existance in the `IDKeeper`. Key = ID type; Value = ID
+
+        Returns
+        -------
+
+        out : bool
+            Whether the player exists in the `IDKeeper`
+        """
         for id in id_dict:
             if id_dict[id] in self.df[id].values:
                 return True
         return False
 
     def append(self, id_dict: dict[str, str]):
+        """
+        Append the player given by the IDs in `id_dict` to the keeper. If at least one ID already exists in `IDKeeper`
+        nothing is done.
+
+        Parameters
+        ----------
+
+        id_dict : dict[str, str]
+            IDs to append to the `IDKeeper`. Key = ID type; Value = ID
+        """
         if not self.exists(id_dict):
             row = {id: None for id in LIST}
             for id in id_dict:
@@ -134,6 +197,9 @@ class IDKeeper:
             self.df.loc[len(self)] = row
 
     def _update_mapping(self, id_map: pandas.DataFrame):
+        """
+        Updates a single mapping given by `id_map` as opposed to all the mappings which is performed by `IDKeeper.update_mapping()`
+        """
         for index in self.df.index:
             id_dict = self.df.iloc[index].dropna().to_dict()
             series = locate_map(id_map, id_dict)
@@ -142,7 +208,17 @@ class IDKeeper:
                 for id in series_dict:
                     self.df.at[index, id] = series_dict[id]
 
-    def update_mapping(self, update_map=False):
+    def update_mapping(self, update_map: bool = False):
+        """
+        Update the ID mappings in the `IDKeeper` by referencing the mapping (`ids.get_mapping()`) and the
+        players `DataFrame` (`players.get()`).
+
+        Parameters
+        ----------
+
+        update_map : bool = False
+            Whether the refence mapping should be updated. Set to `True` when updating advancing a week for example.
+        """
         id_map = get_mapping(self.cache_path, update_map)
         id_list = []
         for id in LIST:
@@ -162,5 +238,5 @@ class IDKeeper:
         self._update_mapping(player_map)
         self._update_mapping(id_map)
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.df)
