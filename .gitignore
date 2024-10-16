@@ -1,13 +1,8 @@
 /env
 /test.py
 /cache
-/nfldpw/cache/__pycache__
-/nfldpw/pbp/__pycache__
-/nfldpw/schedules/__pycache__
-/nfldpw/rosters/__pycache__
-/nfldpw/players/__pycache__
-/nfldpw/__pycache__
+/*/__pycache__
+/*/*/__pycache__
 /build
 /nfldpw.egg-info
-/nfldpw/drafts/__pycache__
 /dist
