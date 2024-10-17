@@ -681,7 +681,7 @@ class PlayerId:
 
     """
 
-    header = "player_id"
+    header = "gsis_id"
 
 
 class EspnId:
