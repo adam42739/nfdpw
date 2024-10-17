@@ -7,6 +7,8 @@ from .. import drafts
 from .. import rosters
 from ..drafts import EXTRA_DRAFT_ID
 import tqdm
+import datetime
+
 
 YAHOO = "yahoo_id"
 ESB = "esb_id"
@@ -56,6 +58,14 @@ LIST = [
     SWISH,
     EXTRA_DRAFT_ID,
 ]
+
+
+def current_season() -> int:
+    today = datetime.datetime.today()
+    if today.month <= 3:
+        return today.year - 1
+    else:
+        return today.year
 
 
 def get_mapping(cache_path: str = None, refresh: bool = False) -> pandas.DataFrame:
@@ -321,13 +331,23 @@ class IDKeeper:
         roster_df = roster_df[COLS].drop_duplicates()
         for _, roster_series in tqdm.tqdm(
             iterable=roster_df.iterrows(),
-            desc="Updating the IDKeeper with players data",
+            desc="Updating the IDKeeper with rosters data",
             total=len(roster_df),
         ):
             ids = roster_series.to_dict()
             self.append(ids)
         self.update_mapping()
         self.dump()
+
+    def refresh(self):
+        season = current_season()
+        years = [year for year in range(2002, season + 1)]
+        print("Updating Draft Data:")
+        self.add_drafts(years)
+        print("Updating Player Data:")
+        self.add_players(True)
+        print("Updating Roster Data:")
+        self.add_rosters(years, True)
 
     def __len__(self) -> int:
         return len(self.df)
