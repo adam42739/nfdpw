@@ -4,6 +4,7 @@ import nfl_data_py
 from .. import cache
 from .. import players
 from .. import drafts
+from .. import rosters
 from ..drafts import EXTRA_DRAFT_ID
 import tqdm
 
@@ -256,7 +257,7 @@ class IDKeeper:
             List of seasons to get draft data for
         """
         drafts_df = drafts.get(seasons, self.cache_path)
-        for index, draft_series in tqdm.tqdm(
+        for _, draft_series in tqdm.tqdm(
             iterable=drafts_df.iterrows(),
             desc="Updating the IDKeeper with drafted players data",
             total=len(drafts_df),
@@ -279,7 +280,7 @@ class IDKeeper:
         otherwise it will use data stored in the cache if it exists.
         """
         players_df = players.get(self.cache_path, refresh_players)
-        for index, player_series in tqdm.tqdm(
+        for _, player_series in tqdm.tqdm(
             iterable=players_df.iterrows(),
             desc="Updating the IDKeeper with players data",
             total=len(players_df),
@@ -292,6 +293,38 @@ class IDKeeper:
                     "extra_ID",
                 ]
             ].to_dict()
+            self.append(ids)
+        self.update_mapping()
+        self.dump()
+
+    def add_rosters(self, seasons: list[int], update_last_season: bool = False):
+        """
+        Add all players from `rosters.get()` to the `IDKeeper`, update the mapping, and save the `IDKeeper`
+        to the cache directory. If `update_last_season` is `True`, `rosters.get()` will refresh the last/current season's
+        roster data from the web source, otherwise it will use data stored in the cache if it exists.
+        """
+        COLS = [
+            rosters.cols.EsbId.header,
+            rosters.cols.PffId.header,
+            rosters.cols.PfrId.header,
+            rosters.cols.EspnId.header,
+            rosters.cols.SmartId.header,
+            rosters.cols.YahooId.header,
+            rosters.cols.PlayerId.header,
+            rosters.cols.SleeperId.header,
+            rosters.cols.RotowireId.header,
+            rosters.cols.SportradarId.header,
+            rosters.cols.FantasyDataId.header,
+            "extra_ID",
+        ]
+        roster_df = rosters.get(seasons, self.cache_path, update_last_season)
+        roster_df = roster_df[COLS].drop_duplicates()
+        for _, roster_series in tqdm.tqdm(
+            iterable=roster_df.iterrows(),
+            desc="Updating the IDKeeper with players data",
+            total=len(roster_df),
+        ):
+            ids = roster_series.to_dict()
             self.append(ids)
         self.update_mapping()
         self.dump()
