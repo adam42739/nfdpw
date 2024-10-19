@@ -8,6 +8,7 @@ from .. import rosters
 from ..drafts import EXTRA_DRAFT_ID
 import tqdm
 import datetime
+import numpy
 
 
 YAHOO = "yahoo_id"
@@ -33,31 +34,31 @@ ROTOWIRE = "rotowire_id"
 KTC = "ktc_id"
 SWISH = "swish_id"
 
-LIST = [
-    YAHOO,
-    ESB,
-    SMART,
-    NFL,
-    ESPN,
-    ROTOWORLD,
-    GSIS,
-    SLEEPER,
-    STATS,
-    SPORTRADAR,
-    CBS,
-    STATS_GLOBAL,
-    CFBREF,
-    FLEAFLICKER,
-    FANTASYPROS,
-    FANTASY_DATA,
-    PFF,
-    MFL,
-    PFR,
-    ROTOWIRE,
-    KTC,
-    SWISH,
-    EXTRA_DRAFT_ID,
-]
+DTYPE_LIST = {
+    YAHOO: "float64",
+    ESB: "object",
+    SMART: "object",
+    NFL: "object",
+    ESPN: "float64",
+    ROTOWORLD: "float64",
+    GSIS: "object",
+    SLEEPER: "float64",
+    STATS: "float64",
+    SPORTRADAR: "object",
+    CBS: "float64",
+    STATS_GLOBAL: "float64",
+    CFBREF: "object",
+    FLEAFLICKER: "float64",
+    FANTASYPROS: "float64",
+    FANTASY_DATA: "float64",
+    PFF: "float64",
+    MFL: "int64",
+    PFR: "object",
+    ROTOWIRE: "float64",
+    KTC: "float64",
+    SWISH: "float64",
+    EXTRA_DRAFT_ID: "object",
+}
 
 
 def current_season() -> int:
@@ -159,7 +160,7 @@ class IDKeeper:
         """
         self.cache_path = cache_path
         path = self._path(cache_path)
-        self.df = pandas.DataFrame({id_header: [] for id_header in LIST})
+        self.df = pandas.DataFrame({id_header: [] for id_header in DTYPE_LIST})
         if os.path.exists(path):
             self.df = pandas.concat([self.df, pandas.read_csv(path, index_col=0)])
 
@@ -204,7 +205,7 @@ class IDKeeper:
             IDs to append to the `IDKeeper`. Key = ID type; Value = ID
         """
         if not self.exists(id_dict):
-            row = {id: None for id in LIST}
+            row = {id: None for id in DTYPE_LIST}
             for id in id_dict:
                 row[id] = id_dict[id]
             self.df.loc[len(self)] = row
@@ -238,7 +239,7 @@ class IDKeeper:
         """
         id_map = get_mapping(self.cache_path, update_map)
         id_list = []
-        for id in LIST:
+        for id in DTYPE_LIST:
             if id in id_map.columns:
                 id_list.append(id)
         id_map = id_map[id_list]
@@ -351,3 +352,105 @@ class IDKeeper:
 
     def __len__(self) -> int:
         return len(self.df)
+
+
+class IDMap:
+    def __init__(self):
+        pass
+
+    def load(self, cache_path: str):
+        """
+        Load the `IDMap` from the given cache directory or create one if it does not exist.
+
+        Parameters
+        ----------
+
+        cache_path : str
+            Cache directory location
+        """
+        self.cache_path = cache_path
+        self.path = cache_path + cache.fname_players() + "-idmap.csv"
+        self.df = pandas.DataFrame({id_header: [] for id_header in DTYPE_LIST})
+        self.df = self.df.astype(dtype=DTYPE_LIST)
+        if os.path.exists(self.path):
+            self.df = pandas.concat(
+                [self.df, pandas.read_csv(self.path, dtype=DTYPE_LIST)]
+            )
+
+    def dump(self):
+        """
+        Save the `IDMap` to the associated cach direcotry.
+        """
+        self.df.to_csv(self.path, index=False)
+
+    def add_bi_map(self, update: bool = False):
+        bi_map = get_mapping(self.cache_path, update)
+        bi_map_cols = bi_map.columns.intersection(DTYPE_LIST).to_list()
+        self.df = pandas.concat([self.df, bi_map[bi_map_cols]])
+
+    def add_drafts(self, seasons: list[int]):
+        draft_cols = [
+            drafts.cols.CfbPlayerId.header,
+            drafts.cols.PfrPlayerId.header,
+            "extra_ID",
+        ]
+        drafts_df = drafts.get(seasons, self.cache_path)
+        self.df = pandas.concat([self.df, drafts_df[draft_cols]])
+
+    def add_players(self, update: bool = False):
+        player_cols = [
+            players.cols.EsbId.header,
+            players.cols.GsisId.header,
+            players.cols.SmartId.header,
+            "extra_ID",
+        ]
+        players_df = players.get(self.cache_path, update)
+        self.df = pandas.concat([self.df, players_df[player_cols]])
+
+    def add_rosters(self, seasons: list[int], update: bool = False):
+        roster_cols = [
+            rosters.cols.EsbId.header,
+            rosters.cols.PffId.header,
+            rosters.cols.PfrId.header,
+            rosters.cols.EspnId.header,
+            rosters.cols.SmartId.header,
+            rosters.cols.YahooId.header,
+            rosters.cols.PlayerId.header,
+            rosters.cols.SleeperId.header,
+            rosters.cols.RotowireId.header,
+            rosters.cols.SportradarId.header,
+            rosters.cols.FantasyDataId.header,
+            "extra_ID",
+        ]
+        roster_df = rosters.get(seasons, self.cache_path, update)
+        self.df = pandas.concat([self.df, roster_df[roster_cols].drop_duplicates()])
+
+    def _unify_get_match_indexes(self, column: str, index: int) -> list[int]:
+        matches = self.df[self.df[column] == self.df[column].iloc[index]]
+        matches = matches.dropna(axis=1)
+        is_match = matches.eq(matches.loc[index]).all(axis=1)
+        is_match = is_match & (is_match.index != index)
+        indexes = is_match.index[is_match]
+        return list(indexes)
+
+    def _unify_column(self, column: str):
+        dupes = self.df[column].duplicated() & self.df[column].notna()
+        for index, is_dup in dupes.items():
+            if is_dup:
+                match_indexes = self._unify_get_match_indexes(column, index)
+                if len(match_indexes) > 1:
+                    for match_index in match_indexes:
+                        new_series = self.df.iloc[index].combine_first(
+                            self.df.iloc[match_index]
+                        )
+                        self.df.iloc[index] = new_series
+                        self.df.iloc[match_index] = new_series
+
+    def maptize(self):
+        self.df = self.df.drop_duplicates()
+        self.df = self.df.reset_index(drop=True)
+        self.df = self.df.replace(0, None)
+        for column in tqdm.tqdm(self.df.columns, total=len(self.df.columns)):
+            self._unify_column(column)
+            self.df = self.df.drop_duplicates()
+            self.df = self.df.reset_index(drop=True)
