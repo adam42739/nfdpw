@@ -1,3 +1,11 @@
+"""
+===========
+Players IDs
+===========
+
+Use of `IDMap` is recommended rather than `IDKeeper`.
+"""
+
 import pandas
 import os
 import nfl_data_py
