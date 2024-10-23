@@ -383,11 +383,29 @@ class IDMap:
         self.df.to_csv(self.path, index=False)
 
     def add_bi_map(self, update: bool = False):
+        """
+        Append the base `nfl_data_py` player ID map.
+
+        Parameters
+        ----------
+
+        update : bool = False
+            Whether the base map should be updated
+        """
         bi_map = get_mapping(self.cache_path, update)
         bi_map_cols = bi_map.columns.intersection(DTYPE_LIST).to_list()
         self.df = pandas.concat([self.df, bi_map[bi_map_cols]])
 
     def add_drafts(self, seasons: list[int]):
+        """
+        Append the draft data.
+
+        Parameters
+        ----------
+
+        seasons : list[int]
+            List of seasons to append draft data for
+        """
         draft_cols = [
             drafts.cols.CfbPlayerId.header,
             drafts.cols.PfrPlayerId.header,
@@ -397,6 +415,15 @@ class IDMap:
         self.df = pandas.concat([self.df, drafts_df[draft_cols]])
 
     def add_players(self, update: bool = False):
+        """
+        Append the player data to the map.
+
+        Parameters
+        ----------
+
+        update : bool = False
+            Whether the player data should be updated
+        """
         player_cols = [
             players.cols.EsbId.header,
             players.cols.GsisId.header,
@@ -407,6 +434,18 @@ class IDMap:
         self.df = pandas.concat([self.df, players_df[player_cols]])
 
     def add_rosters(self, seasons: list[int], update: bool = False):
+        """
+        Append the rosters data
+
+        Parameters
+        ----------
+
+        seasons: list[int]
+            List of seasons to get rosters data for
+
+        update : bool = False
+            Whether the rosters data should be updated
+        """
         roster_cols = [
             rosters.cols.EsbId.header,
             rosters.cols.PffId.header,
@@ -425,6 +464,24 @@ class IDMap:
         self.df = pandas.concat([self.df, roster_df[roster_cols].drop_duplicates()])
 
     def _unify_get_match_indexes(self, column: str, index: int) -> list[int]:
+        """
+        Get the list of indexes from the map DataFrame which match the given column and index.
+
+        Parameters
+        ----------
+
+        column : str
+            Column (ID type)
+
+        index : int
+            Map DataFrame index
+
+        Returns
+        -------
+
+        out : list[int]
+            List of matching indexes
+        """
         matches = self.df[self.df[column] == self.df[column].iloc[index]]
         matches = matches.dropna(axis=1)
         is_match = matches.eq(matches.loc[index]).all(axis=1)
@@ -433,6 +490,15 @@ class IDMap:
         return list(indexes)
 
     def _unify_column(self, column: str):
+        """
+        For the given column, attempt to find duplicate IDs and match the together.
+
+        Parameters
+        ----------
+
+        Columns : str
+            The given column to work on
+        """
         dupes = self.df[column].duplicated() & self.df[column].notna()
         for index, is_dup in dupes.items():
             if is_dup:
@@ -446,10 +512,16 @@ class IDMap:
                         self.df.iloc[match_index] = new_series
 
     def drop_duplicates(self):
+        """
+        Drop duplicates and reset the index.
+        """
         self.df = self.df.drop_duplicates()
         self.df = self.df.reset_index(drop=True)
 
     def maptize(self):
+        """
+        Aggregate all the matcing IDs together.
+        """
         self.drop_duplicates()
         self.df = self.df.replace(0, None)
         for column in tqdm.tqdm(self.df.columns, total=len(self.df.columns)):
