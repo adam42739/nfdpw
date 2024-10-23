@@ -8,7 +8,6 @@ from .. import rosters
 from ..drafts import EXTRA_DRAFT_ID
 import tqdm
 import datetime
-import numpy
 
 
 YAHOO = "yahoo_id"
@@ -52,7 +51,7 @@ DTYPE_LIST = {
     FANTASYPROS: "float64",
     FANTASY_DATA: "float64",
     PFF: "float64",
-    MFL: "int64",
+    MFL: "float64",
     PFR: "object",
     ROTOWIRE: "float64",
     KTC: "float64",
@@ -446,11 +445,13 @@ class IDMap:
                         self.df.iloc[index] = new_series
                         self.df.iloc[match_index] = new_series
 
-    def maptize(self):
+    def drop_duplicates(self):
         self.df = self.df.drop_duplicates()
         self.df = self.df.reset_index(drop=True)
+
+    def maptize(self):
+        self.drop_duplicates()
         self.df = self.df.replace(0, None)
         for column in tqdm.tqdm(self.df.columns, total=len(self.df.columns)):
             self._unify_column(column)
-            self.df = self.df.drop_duplicates()
-            self.df = self.df.reset_index(drop=True)
+            self.drop_duplicates()
