@@ -535,3 +535,20 @@ class IDMap:
         for column in tqdm.tqdm(self.df.columns, total=len(self.df.columns)):
             self._unify_column(column)
             self.drop_duplicates()
+
+    def manual_id_check(self):
+        """
+        Manually check matching IDs to see if the player is the same.
+        """
+        i = 1
+        for column in self.df.columns:
+            print("Manually checking column", str(i), "of", str(len(self.df.columns)))
+            dupes = self.df[column].dropna().duplicated(keep=False)
+            indexes = self.df[column].dropna().index[dupes].to_list()
+            while len(indexes) > 0:
+                print(str(len(indexes)), "duplicates left in column:", column)
+                id_value = self.df[column].iloc[indexes[0]]
+                matching = self.df[self.df[column] == id_value]
+                print(matching.T.to_string())
+                indexes = self.df[column].index[dupes].to_list()
+            i += 1
