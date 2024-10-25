@@ -22,10 +22,11 @@ classifiers=[
 [tool.setools]
 packages = [
     { include = "nfldpw" },
-    { include = "nfldpw.cache" },
-    { include = "nfldpw.pbp" },
-    { include = "nfldpw.schedules" },
-    { include = "nfldpw.rosters" },
-    { include = "nfldpw.players" },
-    { include = "nfldpw.drafts" }
+    { include = "nfldpw.v1" },
+    { include = "nfldpw.v1.cache" },
+    { include = "nfldpw.v1.pbp" },
+    { include = "nfldpw.v1.schedules" },
+    { include = "nfldpw.v1.rosters" },
+    { include = "nfldpw.v1.players" },
+    { include = "nfldpw.v1.drafts" }
 ]
