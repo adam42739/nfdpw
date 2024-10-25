@@ -27,6 +27,12 @@ nfldpw
 
 ## General Usage
 
+Version 2 is recommended for usage.
+
+```python
+import nfldpw.v2 as nfldpw
+```
+
 ### Getting data
 
 ```python
@@ -38,7 +44,7 @@ nfldpw
 Headers names and categorical values are given for most data columns. This is intended for added convenience and is not necessary for general usage.
 
 ```python
->>> import nfldpw.pbp.cols as cols
+>>> import nfldpw.v2.pbp.cols as cols
 >>>
 >>> middle_passes = df[df[cols.PassLocation.header] == cols.PassLocation.MIDDLE]
 ```
