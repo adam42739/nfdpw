@@ -471,31 +471,34 @@ class IDMap:
         roster_df = rosters.get(seasons, self.cache_path, update)
         self.df = pandas.concat([self.df, roster_df[roster_cols].drop_duplicates()])
 
-    def _unify_get_match_indexes(self, column: str, index: int) -> list[int]:
+    def _unify_column_indexes_match(self, index1: int, index2: int) -> bool:
         """
-        Get the list of indexes from the map DataFrame which match the given column and index.
-
-        Parameters
-        ----------
-
-        column : str
-            Column (ID type)
-
-        index : int
-            Map DataFrame index
-
-        Returns
-        -------
-
-        out : list[int]
-            List of matching indexes
+        Check whether two indexes match in there non-missing IDs.
         """
-        matches = self.df[self.df[column] == self.df[column].iloc[index]]
+        matches = self.df.iloc[[index1, index2]]
         matches = matches.dropna(axis=1)
-        is_match = matches.eq(matches.loc[index]).all(axis=1)
-        is_match = is_match & (is_match.index != index)
-        indexes = is_match.index[is_match]
-        return list(indexes)
+        matches = matches.drop_duplicates()
+        if len(matches) == 1:
+            return True
+        else:
+            return False
+
+    def _unify_column_first_dupes(self, column: str) -> pandas.Series:
+        """
+        Get the index of an IDs first occurance if it has duplicates.
+        """
+        series = self.df[column].dropna()
+        all_dupes = series.duplicated(keep=False)
+        first_dupe = series.duplicated(keep="first")
+        return all_dupes ^ first_dupe
+
+    def _unify_column_combine_rows(self, index: int, match_index: int):
+        """
+        Aggregate two rows IDs by their indexes.
+        """
+        new_series = self.df.iloc[index].combine_first(self.df.iloc[match_index])
+        self.df.iloc[index] = new_series
+        self.df.iloc[match_index] = None
 
     def _unify_column(self, column: str):
         """
@@ -507,23 +510,23 @@ class IDMap:
         Columns : str
             The given column to work on
         """
-        dupes = self.df[column].duplicated() & self.df[column].notna()
+        dupes = self._unify_column_first_dupes(column)
         for index, is_dup in dupes.items():
             if is_dup:
-                match_indexes = self._unify_get_match_indexes(column, index)
-                if len(match_indexes) > 1:
-                    for match_index in match_indexes:
-                        new_series = self.df.iloc[index].combine_first(
-                            self.df.iloc[match_index]
-                        )
-                        self.df.iloc[index] = new_series
-                        self.df.iloc[match_index] = new_series
+                match_indexes = self.df.index[
+                    self.df[column] == self.df[column].iloc[index]
+                ].to_list()
+                for match_index in match_indexes:
+                    if match_index != index:
+                        if self._unify_column_indexes_match(index, match_index):
+                            self._unify_column_combine_rows(index, match_index)
 
     def drop_duplicates(self):
         """
         Drop duplicates and reset the index.
         """
         self.df = self.df.drop_duplicates()
+        self.df = self.df.dropna(how="all")
         self.df = self.df.reset_index(drop=True)
 
     def maptize(self):
